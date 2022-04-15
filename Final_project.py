@@ -1,5 +1,4 @@
 '''This is a file for our final project'''
-# Import Argument Parser class
 
 class Book:
     # Parent-class Book that has
@@ -35,11 +34,9 @@ class Book:
 
 # Overdue_Book is a Child class of a parent class Book
 class Overdue_Book(Book):
-    # __init__() doesn't change
-    # overdue() doesn't change
+    # __init__() doesn't change && overdue() doesn't change
     def money_owed(self):
-        # takes in self as argument and calculates money owed when books are
-        # overdue
+        # takes in no argument. Calculates money owed when books are overdue
         overdue = self.rented_days - self.rent_dur
         return overdue * self.overdue_price
 
@@ -56,14 +53,17 @@ def return_book(book_id):
 def main(filepath):
     # Create an empty list of Book named rented, Create an empty list of Book
     # named shelved
+    # Create an empty list of Overdue_Book named overdue
+    # Lists are all immutable.
 
     # Use with function to unpack the given text file (filepath)
     # then using for in loop to set each line as a Book object (When creating
     # it, if the book is overdue (rented_days is negative value), instead of
     # setting it to a Book object, set it to Overdue_Book object).
     # Use if conditional to check whether each line or a book of the text
-    # file is rented or not. If rented, add the book to the returned list.
-    # Else, shelved.
+    # file is rented or not. If rented, add the book to the rented list.
+    # Else, shelved list. For Overdue)Book objects, instead of adding to either
+    # list, append it to overdue list.
 
     # Assign variables to length of each list
     # Assign a variable "total" to a sum of "rented" list length and
