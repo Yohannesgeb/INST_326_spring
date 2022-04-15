@@ -54,7 +54,7 @@ def return_book(book_id):
 def main(filepath):
     # Create an empty list of Book named rented, Create an empty list of Book
     # named shelved
-    # Create an empty list of Overdue_Book named overdue
+    # Create an empty list of Overdue_Book named overdue_books
     # Lists are all immutable.
 
     # Use with function to unpack the given text file (filepath)
@@ -78,4 +78,4 @@ def main(filepath):
 
 if __name__ == "__main__":
     main(filepath)
-    # main(filepath) can be called to run the program.
+    # main(filepath) can be called to run the program. filepath is a text file
