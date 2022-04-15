@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-'''This is a file for our final project'''
 # Import sys lib
 import re
 import sys
-
 class Book:
     # Parent-class Book that has
     # Attributes:
@@ -17,13 +14,13 @@ class Book:
     def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
         # arguments: book_id (int), title (str), pub_year(int)
         # overdue_price(float), rented_days (bool)
-        self.book_id = book_id
-        self.title = title
-        self.pub_year = pub_year
-        self.overdue_price = overdue_price
-        self.rented_days = rented_days
-        self.rent_dur = 7
-        if self.rented_days == 0:
+        self.book_id = book_id # book_id (int, ID # of a book - integer)
+        self.title = title # title (str, title of a book)
+        self.pub_year = pub_year # pub_year (int, Published Year of the Book)
+        self.overdue_price = overdue_price # overdue_price (float, Overdue price per day late)
+        self.rented_days = rented_days # rent_dur (Rental duration, default to integer value of 7)
+        self.rent_dur = 7 # rent_dur (Rental duration, default to integer value of 7)
+        if self.rented_days == 0: # rented (Rented or not, boolean - True = rented / False = shelved)
             self.rented = False
         else:
             self.rented = True
@@ -39,23 +36,49 @@ class Book:
 
 # Overdue_Book is a Child class of a parent class Book
 class Overdue_Book(Book):
+    """ Overdue_Book class inheritance from the Book classs """
     # __init__() doesn't change && overdue() doesn't change
     def money_owed(self):
+        """"money_owed methode calculates money owed for overdue books
+        Args:
+            overdue
+        
+        return: amount owed of overdue books 
+        
+        """
         # takes in no argument. Calculates money owed when books are overdue
         overdue = self.rented_days - self.rent_dur
         return overdue * self.overdue_price
 
 def rent_book(book_id):
+    """The rent_book functio takes (int) value book_id to retrive
+    Args:
+        rent(int)
+    
+    
+      """
     # Takes in integer value argument book_id to retrieve book_id
     # Rents a book from the library by subtracting from a list of shelved Book
     # and add to a list of rented Book.
 
 def return_book(book_id):
+    """The return_book function 
+    Args:
+        return(int); 
+    
+    
+    return list of rented books and add a book to shelve 
+     """
     # Takes in integer value argument book_id to retrieve book_id
-    # Returns a book from the library by subtracting from list of rented Book
-    # and add a Book to a list of shelved Book.
+    # Returns a book from the library by subtracting from list of rented Book and add a Book to a list of shelved Book.
 
 def main(filepath):
+    """The main function 
+    
+    Args:
+    
+    
+    """
     # Create an empty list of Book named rented, Create an empty list of Book
     # named shelved
     # Create an empty list of Overdue_Book named overdue_books
@@ -81,7 +104,5 @@ def main(filepath):
 
 
 if __name__ == "__main__":
-    main(filepath)
+     main(filepath)
     # main(filepath) can be called to run the program. filepath is a text file
-=======
->>>>>>> new commit
