@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 '''This is a file for our final project'''
 # Import sys lib
 import re
@@ -82,3 +83,5 @@ def main(filepath):
 if __name__ == "__main__":
     main(filepath)
     # main(filepath) can be called to run the program. filepath is a text file
+=======
+>>>>>>> new commit
