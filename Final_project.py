@@ -1,6 +1,7 @@
 # Import sys lib
 import re
 import sys
+from typing import overload
 class Book:
     # Parent-class Book that has
     # Attributes:
@@ -39,68 +40,71 @@ class Overdue_Book(Book):
     """ Overdue_Book class inheritance from the Book classs """
     # __init__() doesn't change && overdue() doesn't change
     def money_owed(self):
-        """"money_owed methode calculates money owed for overdue books
-        Args:
-            overdue
+        """" money_owed methode calculates money owed for overdue books
+            overdue_books takes in no argument Calculates money owed when books are overdue
         
         return: amount owed of overdue books 
         
         """
-        # takes in no argument. Calculates money owed when books are overdue
         overdue = self.rented_days - self.rent_dur
         return overdue * self.overdue_price
 
 def rent_book(book_id):
     """The rent_book functio takes (int) value book_id to retrive
     Args:
-        rent(int)
+        rent(int): Takes in integer value argument book_id to retrieve book_id
+    # Rents a book from the library by subtracting from a list of shelved Book
     
+    return:
+        a list of rented Book.
     
       """
-    # Takes in integer value argument book_id to retrieve book_id
-    # Rents a book from the library by subtracting from a list of shelved Book
-    # and add to a list of rented Book.
 
 def return_book(book_id):
     """The return_book function 
+
     Args:
-        return(int); 
+        book_id; Takes in integer value argument book_id to retrieve book_id
     
     
-    return list of rented books and add a book to shelve 
+    Return:
+             a book from the library by subtracting from list of rented Book and add a Book to a list of shelved Book.
      """
-    # Takes in integer value argument book_id to retrieve book_id
-    # Returns a book from the library by subtracting from list of rented Book and add a Book to a list of shelved Book.
 
 def main(filepath):
     """The main function 
     
     Args:
-    
-    
-    """
-    # Create an empty list of Book named rented, Create an empty list of Book
-    # named shelved
-    # Create an empty list of Overdue_Book named overdue_books
-    # Lists are all immutable.
+        filepath 
+        # Create an empty list of Book named rented, Create an empty list of Book
+        # named shelved
+        # Create an empty list of Overdue_Book named overdue_books
+        # Lists are all immutable.
 
-    # Use with function to unpack the given text file (filepath)
-    # then using for in loop to set each line as a Book object (When creating
-    # it, if the book is overdue (rented_days is negative value), instead of
-    # setting it to a Book object, set it to Overdue_Book object).
-    # Use if conditional to check whether each line or a book of the text
-    # file is rented or not. If rented, add the book to the rented list.
-    # Else, shelved list. For Overdue)Book objects, instead of adding to either
-    # list, append it to overdue list.
+        # Use with function to unpack the given text file (filepath)
+        # then using for in loop to set each line as a Book object (When creating
+        # it, if the book is overdue (rented_days is negative value), instead of
+        # setting it to a Book object, set it to Overdue_Book object).
+        # Use if conditional to check whether each line or a book of the text
+        # file is rented or not. If rented, add the book to the rented list.
+        # Else, shelved list. For Overdue)Book objects, instead of adding to either
+        # list, append it to overdue list.
 
-    # Assign variables to length of each list
-    # Assign a variable "total" to a sum of "rented" list length and
-    # "shelved" list length.
-    # Call rent_book function(book_id) && return_book(book_id) with book_id
-    # that are available in each list.
+        # Assign variables to length of each list
+        # Assign a variable "total" to a sum of "rented" list length and
+        # "shelved" list length.
+        # Call rent_book function(book_id) && return_book(book_id) with book_id
+        # that are available in each list.
 
-    # Returns fstring that contains information about total number of books,
-    # total rented books, total shelved books, and total overdue books.
+        # Returns fstring that contains information about total number of books,
+        # total rented books, total shelved books, and total overdue books.
+ """
+    book = Book ([])
+    due = Overdue_Book()
+    done = False
+    while done == False:
+        print ('===== Books Menu ======')
+    user = int(input("Enter choice"))
 
 
 if __name__ == "__main__":
