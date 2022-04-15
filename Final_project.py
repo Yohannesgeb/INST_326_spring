@@ -3,16 +3,16 @@
 class Book:
     # Parent-class Book that has
     # Attributes:
-    # book_id (ID # of a book - integer)
-    # title (title of a book)
-    # pub_year (Published Year of the Book)
-    # overdue_price (Overdue price per day late)
+    # book_id (int, ID # of a book - integer)
+    # title (str, title of a book)
+    # pub_year (int, Published Year of the Book)
+    # overdue_price (float, Overdue price per day late)
     # rent_dur (Rental duration, default to integer value of 7)
     # rented (Rented or not, boolean - True = rented / False = shelved)
 
     def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
         # arguments: book_id (int), title (str), pub_year(int)
-        # overdue_price(int), rented_days (bool)
+        # overdue_price(float), rented_days (bool)
         self.book_id = book_id
         self.title = title
         self.pub_year = pub_year
@@ -26,7 +26,8 @@ class Book:
 
     def overdue(self):
         # Checks whether the book is overdue or not by checking days remaining, 
-        # returns a boolean (True = overdue, False = not overdue)
+        # returns a boolean (True = overdue rent_dur (int 7) - rented_days,
+        # False = not overdue)
         if 0 > self.rent_dur - self.rented_days:
             return True
         else:
