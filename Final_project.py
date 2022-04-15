@@ -2,7 +2,18 @@
 # Import Argument Parser class
 
 class Book:
+    # Parent-class Book that has
+    # Attributes:
+    # book_id (ID # of a book - integer)
+    # title (title of a book)
+    # pub_year (Published Year of the Book)
+    # overdue_price (Overdue price per day late)
+    # rent_dur (Rental duration, default to integer value of 7)
+    # rented (Rented or not, boolean - True = rented / False = shelved)
+
     def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
+        # arguments: book_id (int), title (str), pub_year(int)
+        # overdue_price(int), rented_days (bool)
         self.book_id = book_id
         self.title = title
         self.pub_year = pub_year
@@ -15,13 +26,20 @@ class Book:
             self.rented = True
 
     def overdue(self):
+        # Checks whether the book is overdue or not by checking days remaining, 
+        # returns a boolean (True = overdue, False = not overdue)
         if 0 > self.rent_dur - self.rented_days:
             return True
         else:
             return False
 
+# Overdue_Book is a Child class of a parent class Book
 class Overdue_Book(Book):
+    # __init__() doesn't change
+    # overdue() doesn't change
     def money_owed(self):
+        # takes in self as argument and calculates money owed when books are
+        # overdue
         overdue = self.rented_days - self.rent_dur
         return overdue * self.overdue_price
 
@@ -36,8 +54,8 @@ def return_book(book_id):
     # and add a Book to a list of shelved Book.
 
 def main(filepath):
-    # Takes in filepath as argument
-    # Create an empty list of rented, Create an empty list of shelved
+    # Create an empty list of Book named rented, Create an empty list of Book
+    # named shelved
 
     # Use with function to unpack the given text file (filepath)
     # and use if conditional to check whether each line or a book of the text
@@ -49,7 +67,8 @@ def main(filepath):
     # "shelved" list length.
     # Call rent_book function(book_id) && return_book(book_id) 
 
-    # Return fstring
+    # Returns fstring that contains information about total number of books,
+    # total rented books, total shelved books, and total overdue books.
 
 
 if __name__ == "__main__":
