@@ -58,18 +58,23 @@ def main(filepath):
     # named shelved
 
     # Use with function to unpack the given text file (filepath)
-    # and use if conditional to check whether each line or a book of the text
+    # then using for in loop to set each line as a Book object (When creating
+    # it, if the book is overdue (rented_days is negative value), instead of
+    # setting it to a Book object, set it to Overdue_Book object).
+    # Use if conditional to check whether each line or a book of the text
     # file is rented or not. If rented, add the book to the returned list.
     # Else, shelved.
 
     # Assign variables to length of each list
     # Assign a variable "total" to a sum of "rented" list length and
     # "shelved" list length.
-    # Call rent_book function(book_id) && return_book(book_id) 
+    # Call rent_book function(book_id) && return_book(book_id) with book_id
+    # that are available in each list.
 
     # Returns fstring that contains information about total number of books,
     # total rented books, total shelved books, and total overdue books.
 
 
 if __name__ == "__main__":
-    main()
+    main(filepath)
+    # main(filepath) can be called to run the program.
