@@ -162,9 +162,10 @@ def main(filepath):
         # Call rent_book function(book_id) && return_book(book_id) 
         # with book_id that are available in each list.
 
-        # Returns fstring that contains information about total number of
-        # books, total rented books, total shelved books, and
-        # total overdue books.
+    Returns: 
+        fstring that contains information about total number of
+        books, total rented books, total shelved books, and
+        total overdue books.
  """
     book = Book ([])
     due = Overdue_Book()
