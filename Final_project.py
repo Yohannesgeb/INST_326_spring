@@ -3,6 +3,7 @@ import argparse
 import re
 import sys
 from typing import overload
+
 class Book:
     # Parent-class Book that has
     # Attributes:
@@ -16,8 +17,8 @@ class Book:
     overdue_price, rented_days operations.
 
     Attributes:
-        Book ID (int): Unique ID number of the indivdual books that are avaliable, 
-        expressed as integers.
+        Book ID (int): Unique ID number of the indivdual books that are
+        avaliable, expressed as integers.
         #how many digits are in the ID?
 
         Title (str): The title of the individual books represented as a string.
@@ -28,11 +29,11 @@ class Book:
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float.
 
-        Rental duration (int): Rental duration represents how long the borrower rented
-        the books, default integer value is 7.
+        Rental duration (int): Rental duration represents how long the
+        borrower rented the books, default integer value is 7.
 
-        Rented (boolean): rented represents each individual book availability,
-        expressed as a boolean. True = rented / False = shelved.
+        Rented (boolean): rented represents each individual book 
+        availability, expressed as a boolean. True = rented / False = shelved.
         """
 
     def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
@@ -45,24 +46,36 @@ class Book:
 
             Title (str): Title of book_id
 
-            pub_year (int): Year as 4 digit integer representing the publication of the book.
+            pub_year (int): Year as 4 digit integer representing the
+            publication of the book.
 
-            overdue_price (float): A float that is determined by (rent_dur - rented_days) * price.
+            overdue_price (float): A float that is determined by
+            (rent_dur - rented_days) * price.
 
-            rent_dur (int): The amount of days the borrower chose to rent a book.
+            rent_dur (int): The amount of days the borrower chose to
+            rent a book.
 
-            rented (boolean): A boolean that determines the availability of a book,
-            if True, the book will be designated as "Rented", False will be "Shelved"
+            rented (boolean): A boolean that determines the availability
+            of a book,
+            if True, the book will be designated as "Rented", False will
+            be "Shelved"
 
         """
 
-        self.book_id = book_id # book_id (int, ID # of a book - integer)
-        self.title = title # title (str, title of a book)
-        self.pub_year = pub_year # pub_year (int, Published Year of the Book)
-        self.overdue_price = overdue_price # overdue_price (float, Overdue price per day late)
-        self.rented_days = rented_days # rent_dur (Rental duration, default to integer value of 7)
-        self.rent_dur = 7 # rent_dur (Rental duration, default to integer value of 7)
-        if self.rented_days == 0: # rented (Rented or not, boolean - True = rented / False = shelved)
+        # book_id (int, ID # of a book - integer)
+        self.book_id = book_id
+        # title (str, title of a book)
+        self.title = title
+        # pub_year (int, Published Year of the Book)
+        self.pub_year = pub_year
+        # overdue_price (float,Overdue price per day late)
+        self.overdue_price = overdue_price
+        # rent_dur (Rental duration, default to integer value of 7)
+        self.rented_days = rented_days
+        # rent_dur (Rental duration, default to integer value of 7)
+        self.rent_dur = 7
+            # rented (Rented or not, boolean - True = rented / False = shelved)
+        if self.rented_days == 0:
             self.rented = False
         else:
             self.rented = True
@@ -72,11 +85,12 @@ class Book:
         # returns a boolean (True = overdue rent_dur (int 7) - rented_days,
         # False = not overdue)
                 
-        """Checks if the book chosen is overdue or not based on the remaining days.
+        """Checks if the book chosen is overdue or not based on the 
+            remaining days.
 
 
-            Returns: A boolean, if (rent_dur - rented_days) < 0 then it is True, 
-            otherwise False. (True = overdue, False = not overdue)
+            Returns: A boolean, if (rent_dur - rented_days) < 0 then it
+            is True, otherwise False. (True = overdue, False = not overdue)
 
         """
 
@@ -119,7 +133,8 @@ def return_book(book_id):
     
     
     Return:
-             a book from the library by subtracting from list of rented Book and add a Book to a list of shelved Book.
+             a book from the library by subtracting from list of rented Book
+             and add a Book to a list of shelved Book.
      """
 
 def main(filepath):
@@ -127,28 +142,29 @@ def main(filepath):
     
     Args:
         filepath 
-        # Create an empty list of Book named rented, Create an empty list of Book
-        # named shelved
+        # Create an empty list of Book named rented, Create an empty
+        # list of Book named shelved
         # Create an empty list of Overdue_Book named overdue_books
         # Lists are all immutable.
 
         # Use with function to unpack the given text file (filepath)
-        # then using for in loop to set each line as a Book object (When creating
-        # it, if the book is overdue (rented_days is negative value), instead of
-        # setting it to a Book object, set it to Overdue_Book object).
-        # Use if conditional to check whether each line or a book of the text
-        # file is rented or not. If rented, add the book to the rented list.
-        # Else, shelved list. For Overdue)Book objects, instead of adding to either
-        # list, append it to overdue list.
+        # then using for in loop to set each line as a Book object
+        # (When creating it, if the book is overdue (rented_days is 
+        # negative value), instead of setting it to a Book object, set it to
+        # Overdue_Book object). Use if conditional to check whether each line
+        # or a book of the text file is rented or not. If rented, add the book
+        # to the rented list. Else, shelved list. For Overdue)Book objects,
+        # instead of adding to either list, append it to overdue list.
 
         # Assign variables to length of each list
         # Assign a variable "total" to a sum of "rented" list length and
         # "shelved" list length.
-        # Call rent_book function(book_id) && return_book(book_id) with book_id
-        # that are available in each list.
+        # Call rent_book function(book_id) && return_book(book_id) 
+        # with book_id that are available in each list.
 
-        # Returns fstring that contains information about total number of books,
-        # total rented books, total shelved books, and total overdue books.
+        # Returns fstring that contains information about total number of
+        # books, total rented books, total shelved books, and
+        # total overdue books.
  """
     book = Book ([])
     due = Overdue_Book()
@@ -163,4 +179,5 @@ if __name__ == "__main__":
      parser = argparse.ArgumentParser()
         parser.add_argument()
         parser.add_argument()
-    # main(filepath) can be called to run the program. filepath is a text file
+    # main(filepath) can be called to run the program. filepath is
+    # a text file
