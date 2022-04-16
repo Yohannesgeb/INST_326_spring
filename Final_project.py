@@ -91,7 +91,8 @@ class Overdue_Book(Book):
     # __init__() doesn't change && overdue() doesn't change
     def money_owed(self):
         """" money_owed methode calculates money owed for overdue books
-            overdue_books takes in no argument Calculates money owed when books are overdue
+            overdue_books takes in no argument Calculates money owed when
+            books are overdue
         
         return: amount owed of overdue books 
         
