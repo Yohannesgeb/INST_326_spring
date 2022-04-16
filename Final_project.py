@@ -12,10 +12,50 @@ class Book:
     # overdue_price (float, Overdue price per day late)
     # rent_dur (Rental duration, default to integer value of 7)
     # rented (Rented or not, boolean - True = rented / False = shelved)
+    """The class Book has access to book_id, title, pub_year, 
+    overdue_price, rented_days operations.
+
+    Attributes:
+        Book ID (int): Unique ID number of the indivdual books that are avaliable, 
+        expressed as integers.
+        #how many digits are in the ID?
+
+        Title (str): The title of the individual books represented as a string.
+
+        Publication year (int): The year the indivdual book was published, 
+        expressed by a four digit integer.
+
+        Overdue price (float): Overdue price of a book, price increases 
+        per day late based on rent_dur, expressed as a float.
+
+        Rental duration (int): Rental duration represents how long the borrower rented
+        the books, default integer value is 7.
+
+        Rented (boolean): rented represents each individual book availability,
+        expressed as a boolean. True = rented / False = shelved.
+        """
 
     def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
         # arguments: book_id (int), title (str), pub_year(int)
         # overdue_price(float), rented_days (bool)
+             """Initialize a Book object.
+
+        Args: 
+            book_id (int): ID of indivdual book
+
+            Title (str): Title of book_id
+
+            pub_year (int): Year as 4 digit integer representing the publication of the book.
+
+            overdue_price (float): A float that is determined by (rent_dur - rented_days) * price.
+
+            rent_dur (int): The amount of days the borrower chose to rent a book.
+
+            rented (boolean): A boolean that determines the availability of a book,
+            if True, the book will be designated as "Rented", False will be "Shelved"
+
+        """
+
         self.book_id = book_id # book_id (int, ID # of a book - integer)
         self.title = title # title (str, title of a book)
         self.pub_year = pub_year # pub_year (int, Published Year of the Book)
@@ -31,6 +71,15 @@ class Book:
         # Checks whether the book is overdue or not by checking days remaining, 
         # returns a boolean (True = overdue rent_dur (int 7) - rented_days,
         # False = not overdue)
+                
+        """Checks if the book chosen is overdue or not based on the remaining days.
+
+
+            Returns: A boolean, if (rent_dur - rented_days) < 0 then it is True, 
+            otherwise False. (True = overdue, False = not overdue)
+
+        """
+
         if 0 > self.rent_dur - self.rented_days:
             return True
         else:
