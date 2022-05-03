@@ -39,7 +39,7 @@ class Book:
     def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
         # arguments: book_id (int), title (str), pub_year(int)
         # overdue_price(float), rented_days (bool)
-             """Initialize a Book object.
+        """Initialize a Book object.
 
         Args: 
             book_id (int): ID of indivdual book
