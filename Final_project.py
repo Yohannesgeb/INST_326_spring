@@ -126,7 +126,7 @@ def rent_book(book_id):
       """
 
 def return_book(book_id):
-    """The return_book function 
+    """The return_book function
 
     Args:
         book_id; Takes in integer value argument book_id to retrieve book_id
