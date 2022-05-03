@@ -176,9 +176,9 @@ def main(filepath):
 
 
 if __name__ == "__main__":
-     main(filepath)
-     parser = argparse.ArgumentParser()
-        parser.add_argument()
-        parser.add_argument()
-    # main(filepath) can be called to run the program. filepath is
-    # a text file
+    filepath = ".txt file"
+    main(filepath)
+    parser = argparse.ArgumentParser()
+    parser.add_argument()
+    parser.add_argument()
+# main(filepath) can be called to run the program. filepath is a text file
