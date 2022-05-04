@@ -184,11 +184,13 @@ def main(filepath):
         books, total rented books, total shelved books, and
         total overdue books.
  """
-    book = Book ([])
+    books = []
     with open('book.csv', 'r') as f:
-        file = csv.reader(f)
-        for row in file:
-             book.append(row)
+        for row in f:
+            book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = row.strip().split(',')
+            books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
+            if books 
+
     
     due = Overdue_Book()
     done = False
