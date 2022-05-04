@@ -17,16 +17,22 @@ class Book:
         Publication year (int): The year the indivdual book was published, 
         expressed by a four digit integer.
 
-        Type (str): Type of a book, expressed as a string value. Defaulted to
-        "book".
+        Type (str): Type of a book, expressed as string value. Default string
+        value is "book".
+
+        Copies (int): Number of Book's copies, expressed as int value.
+        Default int value is 1.
 
         Overdue price (float): Overdue price of a book, price increases 
-        per day late based on rent_dur, expressed as a float. Defaulted to 0.
+        per day late based on rent_dur, expressed as a float.
+        Default float value is 0.
 
         rented_days (int): Rental duration represents how long the
-        borrower rented the books, default integer value is 7.
+        borrower rented the books. Expressed as integer value.
+        Default integer value is 7.
 
-        Days of overdue (int): Number of overdue days. Default value is 0.
+        Days of overdue (int): Number of overdue days, expressed as
+        integer value. Default value is 0.
         """
 
     def __init__(self, book_id, title, pub_year, type = "book", copies = 1, 
@@ -85,27 +91,27 @@ def isOnline():
         
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
-        print("You can rent the book!")
+        if type(books) == list() & type(rented) == list():
+            print("You can rent the book!")
     else:
         raise TypeError("Please enter a correct type")
     count = 0
-    if type(books) == list() & type(rented) == list():
-        for book in books:
-            if isinstance(book, Book):
-                if book.book_id == renting_book.book_id:
-                    if book.copies > 1:
-                        book.copies -= 1
-                    else:
-                        books.remove(book)
-        for rent in rented:
-            if rent != rented[0]:
-                count += 1
-            if isinstance(rent, Book):
-                if rent.book_id == renting_book.book_id:
-                    rent.copies += 1
-                    return
+    for book in books:
+        if isinstance(book, Book):
+            if book.book_id == renting_book.book_id:
+                if book.copies > 1:
+                    book.copies -= 1
                 else:
-                    if rented.index(rent) == count:
+                    books.remove(book)
+    for rent in rented:
+        if rent != rented[0]:
+            count += 1
+        if isinstance(rent, Book):
+            if rent.book_id == renting_book.book_id:
+                rent.copies += 1
+                return
+            else:
+                if rented.index(rent) == count:
 
                         
 
