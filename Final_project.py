@@ -118,7 +118,7 @@ def rent_book(books, rented_books, book_id):
     if isinstance(books, Book) & isinstance(rented_books, Book):
         for book in books:
             if book.book_id == book_id:
-
+                
     """The rent_book functio takes (int) value book_id to retrive
     Args:
         rent(int): Takes in integer value argument book_id to retrieve book_id
