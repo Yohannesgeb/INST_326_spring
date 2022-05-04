@@ -80,17 +80,15 @@ class Book:
 
 class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book classs """
-    def money_owed(self):
-        """" money_owed methode calculates money owed for overdue books
-            overdue_books takes in no argument Calculates money owed when
-            books are overdue
+    def __init__(self):
+        super().__init__()
+        self.type = "audio_book"
         
-        return: amount owed of overdue books 
         
-        """
-        overdue = self.rented_days - self.rent_dur
-        return overdue * self.overdue_price
+def isOnline():
 
+
+        
 def rent_book(books, rented_books, book_id):
     if isinstance(books, Book) & isinstance(rented_books, Book):
         for book in books:
