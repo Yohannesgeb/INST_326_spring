@@ -93,9 +93,6 @@ def rent_book(books, rented, renting_book):
                         book.copies -= 1
                     else:
                         books.remove(book)
-            else:
-                books.remove(book)
-                raise TypeError("This book is not a correct type")
         for rent in rented:
             if rent != rented[0]:
                 count += 1
