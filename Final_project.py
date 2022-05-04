@@ -12,13 +12,13 @@ class Book:
         Book ID (int): Unique ID number of the indivdual books that are
         avaliable, expressed as integers.
 
-        Type (str): Type of a book, expressed as a string value. Defaulted to
-        "book".
-
         Title (str): The title of the individual books represented as a string.
 
         Publication year (int): The year the indivdual book was published, 
         expressed by a four digit integer.
+
+        Type (str): Type of a book, expressed as a string value. Defaulted to
+        "book".
 
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float. Defaulted to 0.
