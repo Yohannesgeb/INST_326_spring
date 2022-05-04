@@ -5,14 +5,6 @@ import sys
 from typing import overload
 
 class Book:
-    # Parent-class Book that has
-    # Attributes:
-    # book_id (int, ID # of a book - integer)
-    # title (str, title of a book)
-    # pub_year (int, Published Year of the Book)
-    # overdue_price (float, Overdue price per day late)
-    # rent_dur (Rental duration, default to integer value of 7)
-    # rented (Rented or not, boolean - True = rented / False = shelved)
     """The class Book has access to book_id, title, pub_year, 
     overdue_price, rented_days operations.
 
@@ -27,18 +19,16 @@ class Book:
         expressed by a four digit integer.
 
         Overdue price (float): Overdue price of a book, price increases 
-        per day late based on rent_dur, expressed as a float.
+        per day late based on rent_dur, expressed as a float. Defaulted to 5.
 
-        Rental duration (int): Rental duration represents how long the
+        rented_days (int): Rental duration represents how long the
         borrower rented the books, default integer value is 7.
 
         Rented (boolean): rented represents each individual book 
         availability, expressed as a boolean. True = rented / False = shelved.
         """
 
-    def __init__(self, book_id, title, pub_year, overdue_price, rented_days):
-        # arguments: book_id (int), title (str), pub_year(int)
-        # overdue_price(float), rented_days (bool)
+    def __init__(self,type,book_id,title,pub_year,overdue_price=5,due_days=7):
         """Initialize a Book object.
 
         Args: 
@@ -50,7 +40,7 @@ class Book:
             publication of the book.
 
             overdue_price (float): A float that is determined by
-            (rent_dur - rented_days) * price.
+            (rent_dur - rented_days) * price. Default to 5.
 
             rent_dur (int): The amount of days the borrower chose to
             rent a book.
@@ -61,29 +51,18 @@ class Book:
             be "Shelved"
 
         """
-
-        # book_id (int, ID # of a book - integer)
         self.book_id = book_id
-        # title (str, title of a book)
+        self.type = type
         self.title = title
-        # pub_year (int, Published Year of the Book)
         self.pub_year = pub_year
-        # overdue_price (float,Overdue price per day late)
         self.overdue_price = overdue_price
-        # rent_dur (Rental duration, default to integer value of 7)
-        self.rented_days = rented_days
-        # rent_dur (Rental duration, default to integer value of 7)
-        self.rent_dur = 7
-            # rented (Rented or not, boolean - True = rented / False = shelved)
-        if self.rented_days == 0:
-            self.rented = False
-        else:
+        self.due_days = due_days
+        if self.due_days > 0:
             self.rented = True
+        else:
+            self.rented = False
 
     def overdue(self):
-        # Checks whether the book is overdue or not by checking days remaining, 
-        # returns a boolean (True = overdue rent_dur (int 7) - rented_days,
-        # False = not overdue)
                 
         """Checks if the book chosen is overdue or not based on the 
             remaining days.
@@ -99,10 +78,8 @@ class Book:
         else:
             return False
 
-# Overdue_Book is a Child class of a parent class Book
-class Overdue_Book(Book):
+class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book classs """
-    # __init__() doesn't change && overdue() doesn't change
     def money_owed(self):
         """" money_owed methode calculates money owed for overdue books
             overdue_books takes in no argument Calculates money owed when
@@ -118,7 +95,7 @@ def rent_book(books, rented_books, book_id):
     if isinstance(books, Book) & isinstance(rented_books, Book):
         for book in books:
             if book.book_id == book_id:
-                
+
     """The rent_book functio takes (int) value book_id to retrive
     Args:
         rent(int): Takes in integer value argument book_id to retrieve book_id
