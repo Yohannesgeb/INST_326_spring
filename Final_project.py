@@ -73,13 +73,17 @@ class Book:
             return False
 
 class Audio_Book(Book):
-    """ Overdue_Book class inheritance from the Book classs """
+    """ Overdue_Book class inheritance from the Book class """
     def __init__(self, type):
         type = "audio_book"
         super().__init__()
         self.type = type
 
-    def rented()
+    def rented(self):
+        self.overdue_price = super().overdue_price + 5
+        print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
+        return True
+
         
         
 def isOnline():
