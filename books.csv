@@ -1,30 +1,30 @@
-123456,Book,The Spell of the Night,1978,0,-1
-144536,Audio,The Prince's Mask,2013,0,-1
-123334,Book,The Broken Quarry,2001,3,0
-124242,Book,The Girl in the Fog,1999,0,-1
-153734,Book,How to Steal a Heart,2020,0,-1
-125373,Audio,Clue of the Wooden Pearls,1989,0,-1
-132563,Book,Sharp Boy,2000,0,-1
-123565,Book,Ark,2016,4,0
-163453,Audio,The Fall of Avalon,2010,0,-1
-123534,Book,Cloaked Phoenix,1997,0,-1
-132534,Audio,Before the Devil,2001,1,0
-127924,Book,Ark Falling,2022,0,-1
-174634,Audio,The Shadows in the Air,1986,0,-1
-134333,Audio,Eylsium Dying,2005,7,0
-153452,Book,The Scarlet Tower,2014,0,-1
-162232,Book,The Death of the Blue Lynx,1999,0,-1
-113433,Audio,Secret of the Kissing Porter,1990,0,-1
-103593,Book,Trials of Fire,2009,5,0
-194823,Book,Kill the Fury,2012,0,-1
-146531,Book,Wicked Dance,1979,0,-1
-156485,Book,Spell and The Prince,1998,9,0
-134864,Book,Bionic Twin,2017,0,-1
-102302,Book,Clue of Absence ,2003,0,-1
-100235,Book,Three's a Crowd,2021,3,0
-175432,Book,Built for Pleasure,2019,69,0
-123546,Audio,Shard of Fury,2011,0,-1
-147865,Book,The Serpent in the Gorge,1994,0,-1
-132466,Book,Scars of legends,2007,0,-1
-163420,Book,Halcyon Abyss,2016,0,-1
-130934,Audio,VainGlory,2015,7,0
+123456,The Spell of the Night,1978,Book,0,-1,0
+144536,The Prince's Mask,2013,Audio,0,-1,0
+123334,The Broken Quarry,2001,Book,3,0,1
+124242,The Girl in the Fog,1999,Book,0,-1,0
+153734,How to Steal a Heart,2020,Book,0,-1,0
+125373,Clue of the Wooden Pearls,1989,Audio,0,-1,0
+132563,Sharp Boy,2000,Book,0,-1,0
+123565,Ark,2016,Book,4,0,2
+163453,The Fall of Avalon,2010,Audio,0,-1,0
+123534,Cloaked Phoenix,1997,Book,0,-1,0
+132534,Before the Devil,2001,Audio,1,0,2
+127924,Ark Falling,2022,Book,0,-1,0
+174634,The Shadows in the Air,1986,Audio,0,-1,0
+134333,Eylsium Dying,2005,Audio,7,0,4
+153452,The Scarlet Tower,2014,Book,0,-1,0
+162232,The Death of the Blue Lynx,1999,Book,0,-1,0
+113433,Secret of the Kissing Porter,1990,Audio,0,-1,0
+103593,Trials of Fire,2009,Book,5,0,2
+194823,Kill the Fury,2012,Book,0,-1,0
+146531,Wicked Dance,1979,Book,0,-1,0
+156485,Spell and The Prince,1998,Book,9,0,7
+134864,Bionic Twin,2017,Book,0,-1,0
+102302,Clue of Absence ,2003,Book,0,-1,0
+100235,Three's a Crowd,2021,Book,3,0,2
+175432,Built for Pleasure,2019,Book,69,0,15
+123546,Shard of Fury,2011,Audio,0,-1,0
+147865,The Serpent in the Gorge,1994,Book,0,-1,0
+132466,Scars of legends,2007,Book,0,-1,0
+163420,Halcyon Abyss,2016,Book,0,-1,0
+130934,VainGlory,2015,Audio,7,0,5
