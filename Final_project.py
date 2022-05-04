@@ -2,6 +2,7 @@
 import argparse
 import re
 import sys
+import csv 
 from typing import overload
 
 class Book:
@@ -184,8 +185,11 @@ def main(filepath):
         books, total rented books, total shelved books, and
         total overdue books.
  """
-    with line 
     book = Book ([])
+    with open('book.csv', 'r') as f:
+        file = csv.reader(f)
+        for row in file:
+             book.append(row)
     due = Overdue_Book()
     done = False
     while done == False:
