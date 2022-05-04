@@ -15,7 +15,7 @@ class Book:
         Title (str): The title of the individual books represented as a string.
 
         Publication year (int): The year the indivdual book was published, 
-        expressed by a four digit integer.
+        expressed by a 4-digit integer.
 
         Type (str): Type of a book, expressed as string value. Default string
         value is "book".
@@ -91,11 +91,10 @@ def isOnline():
         
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
-        if type(books) == list() & type(rented) == list():
+        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
             print("You can rent the book!")
     else:
         raise TypeError("Please enter a correct type")
-    count = 0
     for book in books:
         if isinstance(book, Book):
             if book.book_id == renting_book.book_id:
@@ -103,6 +102,7 @@ def rent_book(books, rented, renting_book):
                     book.copies -= 1
                 else:
                     books.remove(book)
+    count = 0
     for rent in rented:
         if rent != rented[0]:
             count += 1
@@ -112,33 +112,50 @@ def rent_book(books, rented, renting_book):
                 return
             else:
                 if rented.index(rent) == count:
+                    rented.append(rent)
+    return
 
-                        
+def return_book(books, rented, return_book):
 
-    """The rent_book functio takes (int) value book_id to retrive
-    Args:
-        rent(int): Takes in integer value argument book_id to retrieve book_id
-    # Rents a book from the library by subtracting from a list of shelved Book
-    
-    return:
-        a list of rented Book.
-    
-      """
-
-def return_book(books, overdue, book_id):
-    """The return_book function
-
-    Args:
-        book_id; Takes in integer value argument book_id to retrieve book_id
-    
-    
-    Return:
-             a book from the library by subtracting from list of rented Book
-             and add a Book to a list of shelved Book.
-     """
+    if isinstance(return_book, Book):
+        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
+            print("You can return the book!")
+    else:
+        raise TypeError("Please enter a correct type")
+    count = 0
+    for book in books:
+        if rent != rented[0]:
+            count += 1
+        if isinstance(book, Book):
+            if book.book_id == return_book.book_id:
+                book.copies += 1
+                if book.copies > 1:
+                    book.copies += 1
+                if book.copies == 1:
+                    book.copies = 1
+                    books.append(book)
+    for rent in rented:
+        if isinstance(rent, Book):
+            if rent.book_id == return_book.book_id:
+                if rent.copies > 1:
+                    rent.copies -= 1
+                if rent.copies == 1:
+                    book.copies = 1
+                rent.copies -= 1
+                return
+            else:
+                if rented.index(rent) == count:
+                    rented.remove(rent)
+    return
 
 def main(filepath):
-    """The main function 
+    """The main function
+    Add more on top of these tasks:
+    - Using with to extract the files accordingly
+    - Create list of rented books and not rented books.
+    - Change attributes accordingly like changing number of copies.
+    - Renting a book out
+    - Returning the book out
     
     Args:
         filepath 
