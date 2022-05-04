@@ -25,9 +25,12 @@ class Book:
 
         rented_days (int): Rental duration represents how long the
         borrower rented the books, default integer value is 7.
+
+        Days of overdue (int): Number of overdue days. Default value is 0.
         """
 
-    def __init__(self,type,book_id,title,pub_year,overdue_price,due_days):
+    def __init__(self, book_id, title, pub_year, type = "book", copies = 1, 
+                overdue_price = 0, due_days = -1, overdue_days = 0):
         """Initialize a Book object.
 
         Args: 
@@ -38,39 +41,29 @@ class Book:
             pub_year (int): Year as 4 digit integer representing the
             publication of the book.
 
+            num_books (int): Number of Copies, expressed as integer value.
+            Default to 1.
+
             overdue_price (float): A float that is determined by
             (rent_dur - rented_days) * price. Default to 5.
 
             rent_dur (int): The amount of days the borrower chose to
             rent a book.
         """
-        type = "book"
-        overdue_price = 0
-        due_days = -1
         self.book_id = book_id
         self.type = type
         self.title = title
         self.pub_year = pub_year
+        self.copies = copies
         self.overdue_price = overdue_price
         self.due_days = due_days
+        self.overdue_days = overdue_days
+        if due_days == 0:
+            self.overdue_price = self.overdue_days * 5
 
     def rented(self):
         self.due_days = 7
         return True
-
-    def overdue(self):
-                
-        """Checks if the book chosen is overdue or not based on the 
-            remaining days.
-
-            Returns: A boolean, if (rent_dur - rented_days) < 0 then it
-            is True, otherwise False. (True = overdue, False = not overdue)
-        """
-
-        if 0 > self.rent_dur - self.rented_days:
-            return True
-        else:
-            return False
 
 class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book class """
@@ -89,13 +82,32 @@ class Audio_Book(Book):
 def isOnline():
 
 
-
-
         
-def rent_book(books, rented_books, book_id):
-    if isinstance(books, Book) & isinstance(rented_books, Book):
+def rent_book(books, rented, renting_book):
+    if isinstance(renting_book, Book):
+        print("You can rent the book!")
+    else:
+        raise TypeError("Please enter a correct type")
+    count = 0
+    if type(books) == list() & type(rented) == list():
         for book in books:
-            if book.book_id == book_id:
+            if isinstance(book, Book):
+                if book.book_id == renting_book.book_id:
+                    if book.copies > 1:
+                        book.copies -= 1
+                    else:
+                        books.remove(book)
+        for rent in rented:
+            if rent != rented[0]:
+                count += 1
+            if isinstance(rent, Book):
+                if rent.book_id == renting_book.book_id:
+                    rent.copies += 1
+                    return
+                else:
+                    if rented.index(rent) == count:
+
+                        
 
     """The rent_book functio takes (int) value book_id to retrive
     Args:
@@ -149,6 +161,7 @@ def main(filepath):
         books, total rented books, total shelved books, and
         total overdue books.
  """
+    with line 
     book = Book ([])
     due = Overdue_Book()
     done = False
