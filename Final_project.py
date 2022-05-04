@@ -27,7 +27,7 @@ class Book:
         borrower rented the books, default integer value is 7.
         """
 
-    def __init__(self,type,book_id,title,pub_year,overdue_price,due_days):
+    def __init__(self, type, book_id, title, pub_year, overdue_price = 0, due_days = -1, overdue_days = 0):
         """Initialize a Book object.
 
         Args: 
@@ -45,21 +45,21 @@ class Book:
             rent a book.
         """
         type = "book"
-        overdue_price = 0
-        due_days = -1
         self.book_id = book_id
         self.type = type
         self.title = title
         self.pub_year = pub_year
         self.overdue_price = overdue_price
         self.due_days = due_days
+        self.overdue_days = overdue_days
+        if due_days == 0:
+            self.overdue_price = self.overdue_days * 5
 
     def rented(self):
         self.due_days = 7
         return True
 
-    def overdue(self):
-                
+    def is_overdue(self):
         """Checks if the book chosen is overdue or not based on the 
             remaining days.
 
@@ -67,10 +67,8 @@ class Book:
             is True, otherwise False. (True = overdue, False = not overdue)
         """
 
-        if 0 > self.rent_dur - self.rented_days:
-            return True
-        else:
-            return False
+        if self.due_days == 0:
+            
 
 class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book classs """
