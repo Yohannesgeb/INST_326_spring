@@ -80,10 +80,12 @@ class Audio_Book(Book):
         super().__init__()
         self.type = type
 
-    def 
+    def rented()
         
         
 def isOnline():
+
+
 
 
         
