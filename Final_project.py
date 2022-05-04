@@ -86,72 +86,71 @@ class Audio_Book(Book):
 
         
         
-def isOnline():
+    def isOnline():
 
 
         
-def rent_book(books, rented, renting_book):
-    if isinstance(renting_book, Book):
-        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
-            print("You can rent the book!")
-    else:
-        raise TypeError("Please enter a correct type")
-    for book in books:
-        if isinstance(book, Book):
-            if book.book_id == renting_book.book_id:
-                if book.copies > 1:
-                    book.copies -= 1
+    def rent_book(books, rented, renting_book):
+        if isinstance(renting_book, Book):
+            if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
+                print("You can rent the book!")
+        else:
+            raise TypeError("Please enter a correct type")
+        for book in books:
+            if isinstance(book, Book):
+                if book.book_id == renting_book.book_id:
+                    if book.copies > 1:
+                        book.copies -= 1
+                    else:
+                        books.remove(book)
+        count = 0
+        for rent in rented:
+            if rent != rented[0]:
+                count += 1
+            if isinstance(rent, Book):
+                if rent.book_id == renting_book.book_id:
+                    rent.copies += 1
+                    return
                 else:
-                    books.remove(book)
-    count = 0
-    for rent in rented:
-        if rent != rented[0]:
-            count += 1
-        if isinstance(rent, Book):
-            if rent.book_id == renting_book.book_id:
-                rent.copies += 1
-                return
-            else:
-                if rented.index(rent) == count:
-                    rented.append(rent)
-    return
+                    if rented.index(rent) == count:
+                        rented.append(rent)
+        return
 
-def return_book(books, rented, return_book):
+    def return_book(books, rented, return_book):
 
-    if isinstance(return_book, Book):
-        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
-            print("You can return the book!")
-    else:
-        raise TypeError("Please enter a correct type")
-    count = 0
-    for book in books:
-        if rent != rented[0]:
-            count += 1
-        if isinstance(book, Book):
-            if book.book_id == return_book.book_id:
-                book.copies += 1
-                if book.copies > 1:
+        if isinstance(return_book, Book):
+            if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
+                print("You can return the book!")
+        else:
+            raise TypeError("Please enter a correct type")
+        count = 0
+        for book in books:
+            if rent != rented[0]:
+                count += 1
+            if isinstance(book, Book):
+                if book.book_id == return_book.book_id:
                     book.copies += 1
-                if book.copies == 1:
-                    book.copies = 1
-                    books.append(book)
-    for rent in rented:
-        if isinstance(rent, Book):
-            if rent.book_id == return_book.book_id:
-                if rent.copies > 1:
+                    if book.copies > 1:
+                        book.copies += 1
+                    if book.copies == 1:
+                        book.copies = 1
+                        books.append(book)
+        for rent in rented:
+            if isinstance(rent, Book):
+                if rent.book_id == return_book.book_id:
+                    if rent.copies > 1:
+                        rent.copies -= 1
+                    if rent.copies == 1:
+                        book.copies = 1
                     rent.copies -= 1
-                if rent.copies == 1:
-                    book.copies = 1
-                rent.copies -= 1
-                return
-            else:
-                if rented.index(rent) == count:
-                    rented.remove(rent)
-    return
+                    return
+                else:
+                    if rented.index(rent) == count:
+                        rented.remove(rent)
+        return
 
 def main(filepath):
-    """The main function
-    Add more on top of these tasks:
+    """The main function Add more on top of these tasks:
     - Using with to extract the files accordingly
     - Create list of rented books and not rented books.
     - Change attributes accordingly like changing number of copies.
@@ -190,11 +189,14 @@ def main(filepath):
         file = csv.reader(f)
         for row in file:
              book.append(row)
+    
     due = Overdue_Book()
     done = False
     while done == False:
         print ('===== Books Menu ======')
     user = int(input("Enter choice"))
+
+    return f"{ }"
 
 
 if __name__ == "__main__":
