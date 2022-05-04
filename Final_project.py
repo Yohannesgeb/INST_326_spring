@@ -157,6 +157,7 @@ def main(filepath):
         books, total rented books, total shelved books, and
         total overdue books.
  """
+    with line 
     book = Book ([])
     due = Overdue_Book()
     done = False
