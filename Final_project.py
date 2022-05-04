@@ -11,7 +11,9 @@ class Book:
     Attributes:
         Book ID (int): Unique ID number of the indivdual books that are
         avaliable, expressed as integers.
-        #how many digits are in the ID?
+
+        Type (str): Type of a book, expressed as a string value. Defaulted to
+        "book".
 
         Title (str): The title of the individual books represented as a string.
 
@@ -19,16 +21,13 @@ class Book:
         expressed by a four digit integer.
 
         Overdue price (float): Overdue price of a book, price increases 
-        per day late based on rent_dur, expressed as a float. Defaulted to 5.
+        per day late based on rent_dur, expressed as a float. Defaulted to 0.
 
         rented_days (int): Rental duration represents how long the
         borrower rented the books, default integer value is 7.
-
-        Rented (boolean): rented represents each individual book 
-        availability, expressed as a boolean. True = rented / False = shelved.
         """
 
-    def __init__(self,type,book_id,title,pub_year,overdue_price=5,due_days=7):
+    def __init__(self,type,book_id,title,pub_year,overdue_price,due_days):
         """Initialize a Book object.
 
         Args: 
@@ -44,33 +43,29 @@ class Book:
 
             rent_dur (int): The amount of days the borrower chose to
             rent a book.
-
-            rented (boolean): A boolean that determines the availability
-            of a book,
-            if True, the book will be designated as "Rented", False will
-            be "Shelved"
-
         """
+        type = "book"
+        overdue_price = 0
+        due_days = -1
         self.book_id = book_id
         self.type = type
         self.title = title
         self.pub_year = pub_year
         self.overdue_price = overdue_price
         self.due_days = due_days
-        if self.due_days > 0:
-            self.rented = True
-        else:
-            self.rented = False
+
+    def rented(self):
+        self.due_days = 7
+        print("")
+        return True
 
     def overdue(self):
                 
         """Checks if the book chosen is overdue or not based on the 
             remaining days.
 
-
             Returns: A boolean, if (rent_dur - rented_days) < 0 then it
             is True, otherwise False. (True = overdue, False = not overdue)
-
         """
 
         if 0 > self.rent_dur - self.rented_days:
@@ -80,9 +75,12 @@ class Book:
 
 class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book classs """
-    def __init__(self):
+    def __init__(self, type):
+        type = "audio_book"
         super().__init__()
-        self.type = "audio_book"
+        self.type = type
+
+    def 
         
         
 def isOnline():
