@@ -61,17 +61,6 @@ class Book:
         self.due_days = 7
         return True
 
-    def is_overdue(self):
-        """Checks if the book chosen is overdue or not based on the 
-            remaining days.
-
-            Returns: A boolean, if (rent_dur - rented_days) < 0 then it
-            is True, otherwise False. (True = overdue, False = not overdue)
-        """
-
-        if self.due_days == 0:
-            
-
 class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book classs """
     def __init__(self, type):
