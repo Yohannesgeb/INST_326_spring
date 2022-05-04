@@ -56,7 +56,6 @@ class Book:
 
     def rented(self):
         self.due_days = 7
-        print("")
         return True
 
     def overdue(self):
