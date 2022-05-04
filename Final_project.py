@@ -85,8 +85,6 @@ class Audio_Book(Book):
 def isOnline():
 
 
-
-
         
 def rent_book(books, rented_books, book_id):
     if isinstance(books, Book) & isinstance(rented_books, Book):
