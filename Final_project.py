@@ -25,6 +25,8 @@ class Book:
 
         rented_days (int): Rental duration represents how long the
         borrower rented the books, default integer value is 7.
+
+        Days of overdue (int): Number of overdue days. Default value is 0.
         """
 
     def __init__(self, type, book_id, title, pub_year, overdue_price = 0, due_days = -1, overdue_days = 0):
