@@ -207,22 +207,23 @@ def main(filepath):
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
+    for book in books:
+        if book.type == "audio_book" & book.type == "online_audio_book":
+            a_books.append(book)
+        if book.type == "paper_book" & book.type == "online_book":
+            p_books.append(book)
+        if book :
+            #not rented
+        if book :
+            #rented
+    for audio in a_books:
+        str = audio.__str__()
+        print(str)
+    for paper in p_books:
+        str = paper.__str__()
+        print(str)
     while True:
-        for book in books:
-            if book.type == "audio_book" & book.type == "online_audio_book":
-                a_books.append(book)
-            if book.type == "paper_book" & book.type == "online_book":
-                p_books.append(book)
-            if book :
-                #not rented
-            if book :
-                #rented
-        for audio in a_books:
-            str = audio.__str__()
-            print(str)
-        for paper in p_books:
-            str = paper.__str__()
-            print(str)
+        #Rent/Return/due pay, etc. with user input
         break
     return
 
