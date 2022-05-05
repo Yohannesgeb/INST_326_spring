@@ -122,37 +122,37 @@ def isOnline(book):
             #Change the overdue_price = 10
             #Change the due_days = 30
             #Change the overdue_days = 0
+            return
 
         if book.type == "audio_book":
             #Change the type "online audio book"
             #Change the overdue_price = 15
             #Change the due_days = (default value is 60)
             #Change the overdue_days = 0
+            return
 
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
-        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
-            print("You can rent the book!")
+        print("You can rent the book!")
     else:
         raise TypeError("Please enter a correct type")
+    renting_book.rented()
+    changed = 0
     for book in books:
         if isinstance(book, Book):
             if book.book_id == renting_book.book_id:
-                if book.copies > 1:
-                    book.copies -= 1
-                else:
-                    books.remove(book)
-    count = 0
+                changed += 1
+                book.copies -= 1
+    if changed > 0:
+        books.remove(book)
+    num_copies = 0
     for rent in rented:
-        if rent != rented[0]:
-            count += 1
         if isinstance(rent, Book):
             if rent.book_id == renting_book.book_id:
                 rent.copies += 1
-                return
-            else:
-                if rented.index(rent) == count:
-                    rented.append(rent)
+                num_copies += rent.copies
+    renting_book.copies = num_copies
+    rented.append(renting_book)
 
 def return_book(books, rented, return_book):
     if isinstance(return_book, Book):
@@ -161,12 +161,13 @@ def return_book(books, rented, return_book):
     else:
         raise TypeError("Please enter a correct type")
     return_book.returned()
+    num_copies = 0
     for book in books:
         if isinstance(book, Book):
             if book.book_id == return_book.book_id:
                 book.copies += 1
-                num_cop = book.copies
-    return_book.copies = num_cop
+                num_copies += book.copies
+    return_book.copies = num_copies
     books.append(return_book)
     changed = 0
     for rent in rented:
