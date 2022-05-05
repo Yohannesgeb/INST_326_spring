@@ -112,11 +112,22 @@ class Audio_book(Book):
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
 
 #Functions
-def isOnline():
+def isOnline(book):
     """Books can be Online format or be Audio book.
     
     """
-    if 
+    if isinstance(book, Book):
+        if book.type == "paper_book":
+            #Change the type = "online book"
+            #Change the overdue_price = 10
+            #Change the due_days = -1
+            #Change the overdue_days = 0
+
+        if book.type == "audio_book":
+            #Change the type "online audio book"
+            #Change the overdue_price = 15
+            #Change the due_days = -1
+            #Change the overdue_days = 0
 
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
