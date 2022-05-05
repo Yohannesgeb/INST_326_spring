@@ -238,6 +238,7 @@ def main(filepath):
         for line in f:
             books.append(line)
 
+
 if __name__ == "__main__":
     filepath = "books.csv"
     main(filepath)
