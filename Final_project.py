@@ -213,6 +213,10 @@ def main(filepath):
                 a_books.append(book)
             if book.type == "paper_book" & book.type == "online_book":
                 p_books.append(book)
+            if book :
+                #not rented
+            if book :
+                #rented
         for audio in a_books:
             str = audio.__str__()
             print(str)
