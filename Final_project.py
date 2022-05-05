@@ -44,9 +44,6 @@ class Book:
             pub_year (int): Year as 4 digit integer representing the
             publication of the book.
 
-            num_books (int): Number of Copies, expressed as integer value.
-            Default to 1.
-
             overdue_price (float): A float that is determined by
             (rent_dur - rented_days) * price. Default to 5.
 
@@ -65,13 +62,7 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
-        return f"""Book ID: {self.book_id}.\nBook type: {self.type}.\n
-        Book title: {self.title}.\n
-                   Book published year: {self.pub_year}.\n
-                   Book copies: {self.copies}.\n
-                   Book overdue price: {self.overdue_price}.\n
-                   Book due days: {self.due_days}.\n
-                   Book overdue days: {self.overdue_days}."""
+        return f"""Book ID: {self.book_id}.\nBook title: {self.title}.\n"""
     
     def __repr__(self):
         return f"""Book({self.book_id},{self.type},{self.title},
@@ -97,6 +88,9 @@ class Paper_book(Book):
     def __init__(self, type = "paper_book"):
         super().__init__()
         self.type = type
+    
+    def __str__(self):
+        return f"Paper Book ID: {self.book_id}.\nPaper Book title: {self.title}.\n"
 
 class Audio_book(Book):
     """ Overdue_Book class inheritance from the Book class """
@@ -108,6 +102,9 @@ class Audio_book(Book):
     def rented(self):
         self.overdue_price = super().overdue_price + 5
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
+    
+    def __str__(self):
+        return f"Audio Book ID: {self.book_id}.\nAudio Book title: {self.title}.\n"
 
 #Functions
 def isOnline(book):
@@ -223,8 +220,8 @@ def main(filepath):
             print(str)
             # print(f"Audio Book ID: {audio.book_id}")
             # print(f"Audio Book Title: {audio.title}")
-        for book in p_books:
-            str = book.__str__()
+        for paper in p_books:
+            str = paper.__str__()
             print(str)
             # print(f"Paper Book ID: {book.book_id}")
             # print(f"Paper Book Title: {book.title}")
