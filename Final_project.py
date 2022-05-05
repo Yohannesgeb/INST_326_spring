@@ -33,7 +33,7 @@ class Book:
         integer value. Default value is 0.
         """
 
-    def __init__(self, book_id, title, pub_year, type = "book", copies = 1, 
+    def __init__(self, book_id, title, pub_year, type, copies = 1, 
                 overdue_price = 0, due_days = -1, overdue_days = 0):
         """Initialize a Book object.
 
@@ -95,6 +95,11 @@ class Book:
         self.due_days = 0
         self.overdue_price += 5
 
+class Paper_book(Book):
+    def __init__(self, type = "paper_book"):
+        super().__init__()
+        self.type = type
+
 class Audio_book(Book):
     """ Overdue_Book class inheritance from the Book class """
     def __init__(self, type):
@@ -108,7 +113,10 @@ class Audio_book(Book):
 
 #Functions
 def isOnline():
+    """Books can be Online format or be Audio book.
     
+    """
+
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
         if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
