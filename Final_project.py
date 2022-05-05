@@ -138,9 +138,6 @@ def isOnline(book):
             book.due_days = "60"
             book.overdue_days = "0"
 
-def isOverdue(book):
-
-
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
         print("You can rent the book!")
@@ -214,17 +211,26 @@ def main(filepath):
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
-            due = books()
-           
-    while true:
-        for book in books:
-            print (book.book_id)
+    for book in books:
+        print(f"Book ID: {book.book_id}")
+        print(f"Book Title: {book.title}")
+        if book.type == "audio_book":
+            a_books.append(book)
+        if book.type == "paper_book":
+            p_books.append(book)
+    for audio in a_books:
+        print(f"Audio Book ID: {audio.book_id}")
+        print(f"Audio Book Title: {audio.title}")
+    for book in p_books:
+        print(f"Paper Book ID: {book.book_id}")
+        print(f"Paper Book Title: {book.title}")
+    return
 
 
     print ('===== Books Menu ======')
     user = int(input("Enter choice"))
 
-    return 
+    
 
 
 
