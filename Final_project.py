@@ -208,6 +208,7 @@ def main(filepath):
             books.append(line)
 
 if __name__ == "__main__":
+    filepath = "books.csv"
     main(filepath)
     parser = argparse.ArgumentParser()
     parser.add_argument()
