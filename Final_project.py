@@ -220,7 +220,7 @@ def main(filepath):
  """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
-    na_books = list()   #list of not audio books
+    p_books = list()   #list of paper books
     a_books = list()    #list of audio books
     books = list()
     with open(filepath, "r", encoding="utf-8") as f:
