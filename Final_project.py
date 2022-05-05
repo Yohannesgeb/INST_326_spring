@@ -27,10 +27,6 @@ class Book:
         per day late based on rent_dur, expressed as a float.
         Default float value is 0.
 
-        rented_days (int): Rental duration represents how long the
-        borrower rented the books. Expressed as integer value.
-        Default integer value is 7.
-
         Days of overdue (int): Number of overdue days, expressed as
         integer value. Default value is 0.
         """
@@ -39,7 +35,7 @@ class Book:
                 overdue_price = 0, due_days = -1, overdue_days = 0):
         """Initialize a Book object.
 
-        Args: 
+        Args:
             book_id (int): ID of indivdual book
 
             Title (str): Title of book_id
@@ -66,10 +62,36 @@ class Book:
         self.overdue_days = overdue_days
         if due_days == 0:
             self.overdue_price = self.overdue_days * 5
+    
+    def __str__(self):
+        return f"""Book({self.book_id}.\n
+                   Book type: {self.type}.\n
+                   Book title: {self.title}.\n
+                   Book published year: {self.pub_year}.\n
+                   Book copies: {self.copies}.\n
+                   Book overdue price: {self.overdue_price}.\n
+                   Book due days: {self.due_days}.\n
+                   Book overdue days: {self.overdue_days}."""
+    
+    def __repr__(self):
+        return f"""Book({self.book_id},{self.type},{self.title},
+                   {self.pub_year},{self.copies},{self.overdue_price},
+                   {self.due_days},{self.overdue_days})"""
 
     def rented(self):
+        self.copies += 1
         self.due_days = 7
-        return True
+
+    def returned(self):
+        if self.overdue_price == 0:
+            self.copies += 1
+            self.due_days = -1
+            self.overdue_days = 0
+            return True
+
+    def overdue(self):
+        self.due_days = 0
+        self.overdue_price += 5
 
 class Audio_Book(Book):
     """ Overdue_Book class inheritance from the Book class """
@@ -81,76 +103,68 @@ class Audio_Book(Book):
     def rented(self):
         self.overdue_price = super().overdue_price + 5
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
-        return True
 
         
         
 def isOnline():
-
-
-        
+ 
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
-        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
+        if type(books) == list[Book] & type(rented) == list[Book]:
             print("You can rent the book!")
     else:
         raise TypeError("Please enter a correct type")
+    changed = 0
+    renting_book.rented()
+    renting_book.copies = 1
     for book in books:
         if isinstance(book, Book):
             if book.book_id == renting_book.book_id:
-                if book.copies > 1:
-                    book.copies -= 1
-                else:
-                    books.remove(book)
-    count = 0
+                changed += 1
+                book.copies -= 1
+    if changed > 0:
+        books.remove(renting_book)
+    num_copies = 0
     for rent in rented:
-        if rent != rented[0]:
-            count += 1
         if isinstance(rent, Book):
             if rent.book_id == renting_book.book_id:
                 rent.copies += 1
-                return
-            else:
-                if rented.index(rent) == count:
-                    rented.append(rent)
+                num_copies = rent.copies
+    renting_book.copies = num_copies
+    rented.append(renting_book)
     return
 
 def return_book(books, rented, return_book):
-
     if isinstance(return_book, Book):
         if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
             print("You can return the book!")
     else:
         raise TypeError("Please enter a correct type")
-    count = 0
+    return_book.returned()
     for book in books:
-        if rent != rented[0]:
-            count += 1
         if isinstance(book, Book):
             if book.book_id == return_book.book_id:
                 book.copies += 1
-                if book.copies > 1:
-                    book.copies += 1
-                if book.copies == 1:
-                    book.copies = 1
-                    books.append(book)
+                num_cop = book.copies
+    return_book.copies = num_cop
+    books.append(return_book)
+    changed = 0
     for rent in rented:
         if isinstance(rent, Book):
             if rent.book_id == return_book.book_id:
-                if rent.copies > 1:
-                    rent.copies -= 1
-                if rent.copies == 1:
-                    book.copies = 1
+                changed += 1
                 rent.copies -= 1
-                return
-            else:
-                if rented.index(rent) == count:
-                    rented.remove(rent)
-    return
+    if changed > 0:
+        rented.remove(return_book)
+
+def due_pay(book, pay):
+    if isinstance(book, Book):
+        book.overdue_price -= pay
+    print(f"After paying ${pay}, your due balance is ${book.overdue_price}.")
 
 def main(filepath):
     """The main function
-    Add more on top of these tasks:
+    Recommended tasks:
     - Using with to extract the files accordingly
     - Create list of rented books and not rented books.
     - Change attributes accordingly like changing number of copies.
@@ -184,14 +198,14 @@ def main(filepath):
         books, total rented books, total shelved books, and
         total overdue books.
  """
-    with line 
-    book = Book ([])
-    due = Overdue_Book()
-    done = False
-    while done == False:
-        print ('===== Books Menu ======')
-    user = int(input("Enter choice"))
-
+    nr_books = list()
+    r_books = list()
+    na_books = list()
+    a_books = list()
+    books = list()
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            books.append(line)
 
 if __name__ == "__main__":
     main(filepath)
