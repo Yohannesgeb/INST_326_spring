@@ -95,7 +95,7 @@ class Book:
         self.due_days = 0
         self.overdue_price += 5
 
-class Audio_Book(Book):
+class Audio_book(Book):
     """ Overdue_Book class inheritance from the Book class """
     def __init__(self, type):
         type = "audio_book"
