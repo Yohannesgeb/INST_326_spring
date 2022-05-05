@@ -17,8 +17,7 @@ class Book:
         Publication year (int): The year the indivdual book was published, 
         expressed by a 4-digit integer.
 
-        Type (str): Type of a book, expressed as string value. Default string
-        value is "book".
+        Type (str): Type of a book, expressed as string value.
 
         Copies (int): Number of Book's copies, expressed as int value.
         Default int value is 1.
@@ -128,6 +127,9 @@ def isOnline(book):
             #Change the overdue_price = 15
             #Change the due_days = (default value is 60)
             #Change the overdue_days = 0
+
+def isOverdue(book):
+
 
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
