@@ -116,6 +116,7 @@ def isOnline():
     """Books can be Online format or be Audio book.
     
     """
+    if 
 
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
