@@ -206,6 +206,8 @@ def main(filepath):
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
+            if book_type == "audio_book":
+                a_books.append(Audio_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
     for book in books:
         if book.type == "audio_book": # book.type == "online_audio_book":
             a_books.append(book)
