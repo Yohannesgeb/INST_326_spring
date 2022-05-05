@@ -214,7 +214,7 @@ def main(filepath):
         if book.type == "notrented_book":
             nr_books.append(book)
         if book.type == "rented_book":
-            r_books == append(book)
+            r_books.append(book)
     a_count = 1
     for audio in a_books:
         print(f"Audio Book #{a_count}")
@@ -235,7 +235,7 @@ def main(filepath):
         nr_count += -1
     r_count = 1
     for rented_book in r_books:
-        print (f"Rented Book #{r_books}")
+        print (f"Rented Book #{r_count}")
         str = rent_book.__str__()
         print(str)
         r_books += 1
