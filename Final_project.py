@@ -23,6 +23,8 @@ class Book:
         Copies (int): Number of Book's copies, expressed as int value.
         Default int value is 1.
 
+        Days until due (str): -1 when it has not been rented out.
+
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float.
         Default float value is 0.
