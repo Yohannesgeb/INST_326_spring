@@ -234,9 +234,27 @@ def main(filepath):
     p_books = list()   #list of paper books
     a_books = list()    #list of audio books
     books = list()
+    
     with open(filepath, "r", encoding="utf-8") as f:
         for line in f:
             books.append(line)
+    books = []
+    with open('book.csv', 'r') as f:
+        for row in f:
+            book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = row.strip().split(',')
+            books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
+            if books is overdue_days)
+                
+
+    
+    due = Overdue_Book()
+    done = False
+    while done == False:
+        print ('===== Books Menu ======')
+    user = int(input("Enter choice"))
+
+    return 
+
 
 
 if __name__ == "__main__":
