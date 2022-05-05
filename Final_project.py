@@ -237,17 +237,13 @@ def main(filepath):
     
     with open(filepath, "r", encoding="utf-8") as f:
         for line in f:
-            books.append(line)
-    books = []
-    with open('book.csv', 'r') as f:
-        for row in f:
-            book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = row.strip().split(',')
+            book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
-            if books is overdue_days)
-                
+            if books == overdue_days():
+                books = -1
+        due = len
+    total = rent_book + 
 
-    
-    due = Overdue_Book()
     done = False
     while done == False:
         print ('===== Books Menu ======')
