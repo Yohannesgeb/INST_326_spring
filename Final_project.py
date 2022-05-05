@@ -215,22 +215,32 @@ def main(filepath):
             nr_books.append(book)
         if book.type == "rented_book":
             r_books == append(book)
-    count = 1
+    a_count = 1
     for audio in a_books:
-        print(f"Audio Book #{count}")
+        print(f"Audio Book #{a_count}")
         str = audio.__str__()
         print(str)
-        count+=1
-    a_count = 1
-        
+        a_count+=1
+    p_count = 1
     for paper in p_books:
-        print(f"Paper Book #{a_count}")
+        print(f"Paper Book #{p_count}")
         str = paper.__str__()
         print(str)
-        a_count+=1
+        p_count+=1
+    nr_count = -1
+    for notrental_bookn in nr_books:
+        print (f"Not rented book#{nr_count}")
+        str = notrental_book.__str__()
+        print(str)
+        nr_count += -1
+    r_count = 1
+    for rented_book in r_books:
+        print (f"Rented Book #{r_books}")
+        str = rent_book.__str__()
+        print(str)
+        r_books += 1
+
     
-    for notrental_book in nr_books
-        print(f"")
     while True:
         #Rent/Return/due pay, etc. with user input. You want to print out
         #changes that you make or print the entire list?
