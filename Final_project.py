@@ -198,10 +198,10 @@ def main(filepath):
         books, total rented books, total shelved books, and
         total overdue books.
  """
-    nr_books = list()
-    r_books = list()
-    na_books = list()
-    a_books = list()
+    nr_books = list()   #list of not rented books
+    r_books = list()    #list of rented books
+    na_books = list()   #list of not audio books
+    a_books = list()    #list of audio books
     books = list()
     with open(filepath, "r", encoding="utf-8") as f:
         for line in f:
