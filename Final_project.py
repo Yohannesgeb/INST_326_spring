@@ -110,28 +110,28 @@ def isOnline():
  
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
-        if type(books) == list[Book] & type(rented) == list[Book]:
+        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
             print("You can rent the book!")
     else:
         raise TypeError("Please enter a correct type")
-    changed = 0
-    renting_book.rented()
-    renting_book.copies = 1
     for book in books:
         if isinstance(book, Book):
             if book.book_id == renting_book.book_id:
-                changed += 1
-                book.copies -= 1
-    if changed > 0:
-        books.remove(renting_book)
-    num_copies = 0
+                if book.copies > 1:
+                    book.copies -= 1
+                else:
+                    books.remove(book)
+    count = 0
     for rent in rented:
+        if rent != rented[0]:
+            count += 1
         if isinstance(rent, Book):
             if rent.book_id == renting_book.book_id:
                 rent.copies += 1
-                num_copies = rent.copies
-    renting_book.copies = num_copies
-    rented.append(renting_book)
+                return
+            else:
+                if rented.index(rent) == count:
+                    rented.append(rent)
     return
 
 def return_book(books, rented, return_book):
