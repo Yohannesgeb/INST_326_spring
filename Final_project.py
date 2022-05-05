@@ -65,9 +65,8 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
-        return f"""Book({self.book_id}.\n
-                   Book type: {self.type}.\n
-                   Book title: {self.title}.\n
+        return f"""Book ID: {self.book_id}.\nBook type: {self.type}.\n
+        Book title: {self.title}.\n
                    Book published year: {self.pub_year}.\n
                    Book copies: {self.copies}.\n
                    Book overdue price: {self.overdue_price}.\n
@@ -211,19 +210,25 @@ def main(filepath):
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
-    for book in books:
-        print(f"Book ID: {book.book_id}")
-        print(f"Book Title: {book.title}")
-        if book.type == "audio_book":
-            a_books.append(book)
-        if book.type == "paper_book":
-            p_books.append(book)
-    for audio in a_books:
-        print(f"Audio Book ID: {audio.book_id}")
-        print(f"Audio Book Title: {audio.title}")
-    for book in p_books:
-        print(f"Paper Book ID: {book.book_id}")
-        print(f"Paper Book Title: {book.title}")
+    while True:
+        for book in books:
+            # print(f"Book ID: {book.book_id}")
+            # print(f"Book Title: {book.title}")
+            if book.type == "audio_book":
+                a_books.append(book)
+            if book.type == "paper_book":
+                p_books.append(book)
+        for audio in a_books:
+            str = audio.__str__()
+            print(str)
+            # print(f"Audio Book ID: {audio.book_id}")
+            # print(f"Audio Book Title: {audio.title}")
+        for book in p_books:
+            str = book.__str__()
+            print(str)
+            # print(f"Paper Book ID: {book.book_id}")
+            # print(f"Paper Book Title: {book.title}")
+        break
     return
 
 
