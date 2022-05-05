@@ -97,7 +97,9 @@ class Paper_book(Book):
         self.type = type
     
     def __str__(self):
-        return f"Paper Book ID: {self.book_id}.\nPaper Book title: {self.title}.\n"
+        str = (f"Paper Book ID: {self.book_id}.\n"
+               f"Paper Book title: {self.title}.\n")
+        return str
 
 class Audio_book(Book):
     """Audio Book
