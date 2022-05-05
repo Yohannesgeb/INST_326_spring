@@ -223,7 +223,8 @@ def main(filepath):
         str = paper.__str__()
         print(str)
     while True:
-        #Rent/Return/due pay, etc. with user input
+        #Rent/Return/due pay, etc. with user input. You want to print out
+        #changes that you make or print the entire list?
         break
     return
 
