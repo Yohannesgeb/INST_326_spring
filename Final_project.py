@@ -209,8 +209,6 @@ def main(filepath):
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
     while True:
         for book in books:
-            # print(f"Book ID: {book.book_id}")
-            # print(f"Book Title: {book.title}")
             if book.type == "audio_book":
                 a_books.append(book)
             if book.type == "paper_book":
@@ -218,13 +216,9 @@ def main(filepath):
         for audio in a_books:
             str = audio.__str__()
             print(str)
-            # print(f"Audio Book ID: {audio.book_id}")
-            # print(f"Audio Book Title: {audio.title}")
         for paper in p_books:
             str = paper.__str__()
             print(str)
-            # print(f"Paper Book ID: {book.book_id}")
-            # print(f"Paper Book Title: {book.title}")
         break
     return
 
