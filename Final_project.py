@@ -132,7 +132,6 @@ def rent_book(books, rented, renting_book):
             else:
                 if rented.index(rent) == count:
                     rented.append(rent)
-    return
 
 def return_book(books, rented, return_book):
     if isinstance(return_book, Book):
