@@ -244,7 +244,7 @@ def main(filepath):
     while True:
         rent_book in r_books 
         print ('===== Books Menu ======')
-        user = int(input("Enter choice")) 
+        user = int(input("Enter choice: ")) 
 
         
         print ()
