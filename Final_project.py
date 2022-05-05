@@ -228,9 +228,9 @@ def main(filepath):
         print(str)
         p_count+=1
     nr_count = -1
-    for notrental_bookn in nr_books:
+    for rented_book in nr_books:
         print (f"Not rented book#{nr_count}")
-        str = notrental_book.__str__()
+        str = rented_book.__str__()
         print(str)
         nr_count += -1
     r_count = 1
@@ -239,17 +239,22 @@ def main(filepath):
         str = rent_book.__str__()
         print(str)
         r_books += 1
-
+    
     
     while True:
+        rent_book in r_books 
+        print ('===== Books Menu ======')
+        user = int(input("Enter choice")) 
+
+        
+        print ()
         #Rent/Return/due pay, etc. with user input. You want to print out
         #changes that you make or print the entire list?
         break
     return
 
 
-    print ('===== Books Menu ======')
-    user = int(input("Enter choice"))
+  
 
     
 
