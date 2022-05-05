@@ -202,32 +202,7 @@ def main(filepath):
     - Renting a book out
     - Returning the book out
     
-    Args:
-        filepath 
-        # Create an empty list of Book named rented, Create an empty
-        # list of Book named shelved
-        # Create an empty list of Overdue_Book named overdue_books
-        # Lists are all immutable.
-
-        # Use with function to unpack the given text file (filepath)
-        # then using for in loop to set each line as a Book object
-        # (When creating it, if the book is overdue (rented_days is 
-        # negative value), instead of setting it to a Book object, set it to
-        # Overdue_Book object). Use if conditional to check whether each line
-        # or a book of the text file is rented or not. If rented, add the book
-        # to the rented list. Else, shelved list. For Overdue)Book objects,
-        # instead of adding to either list, append it to overdue list.
-
-        # Assign variables to length of each list
-        # Assign a variable "total" to a sum of "rented" list length and
-        # "shelved" list length.
-        # Call rent_book function(book_id) && return_book(book_id) 
-        # with book_id that are available in each list.
-
     Returns: 
-        fstring that contains information about total number of
-        books, total rented books, total shelved books, and
-        total overdue books.
  """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
@@ -239,14 +214,14 @@ def main(filepath):
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
-            if books == overdue_days():
-                books = -1
-        due = len
-    total = rent_book + 
+            due = books()
+           
+    while true:
+        for book in books:
+            print (book.book_id)
 
-    done = False
-    while done == False:
-        print ('===== Books Menu ======')
+
+    print ('===== Books Menu ======')
     user = int(input("Enter choice"))
 
     return 
