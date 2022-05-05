@@ -91,7 +91,8 @@ class Paper_book(Book):
 
         Attributes:
     """
-    def __init__(self, type = "paper_book"):
+    def __init__(self):
+        type = "paper_book"
         super().__init__()
         self.type = type
     
@@ -103,7 +104,7 @@ class Audio_book(Book):
 
         Attributes:
     """
-    def __init__(self, type):
+    def __init__(self):
         type = "audio_book"
         super().__init__()
         self.type = type
