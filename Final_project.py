@@ -5,8 +5,7 @@ import sys
 from typing import overload
 
 class Book:
-    """The class Book has access to book_id, title, pub_year, 
-    overdue_price, rented_days operations.
+    """Any type of book.
 
     Attributes:
         Book ID (int): Unique ID number of the indivdual books that are
@@ -85,6 +84,10 @@ class Book:
         self.overdue_price += 5
 
 class Paper_book(Book):
+    """Paper Book
+
+        Attributes:
+    """
     def __init__(self, type = "paper_book"):
         super().__init__()
         self.type = type
@@ -93,7 +96,10 @@ class Paper_book(Book):
         return f"Paper Book ID: {self.book_id}.\nPaper Book title: {self.title}.\n"
 
 class Audio_book(Book):
-    """ Overdue_Book class inheritance from the Book class """
+    """Audio Book
+
+        Attributes:
+    """
     def __init__(self, type):
         type = "audio_book"
         super().__init__()
@@ -185,8 +191,8 @@ def main(filepath):
     - Renting a book out
     - Returning the book out
     
-    Returns: 
- """
+        Returns: 
+    """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
     p_books = list()   #list of paper books
