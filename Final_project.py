@@ -122,12 +122,22 @@ def isOnline(book):
             #Change the overdue_price = 10
             #Change the due_days = 30
             #Change the overdue_days = 0
+            
+            book.type = "online_book"
+            book.overdue_price = "10"
+            book.due_days = "30"
+            book.overdue_days = "0"
 
         if book.type == "audio_book":
             #Change the type "online audio book"
             #Change the overdue_price = 15
             #Change the due_days = (default value is 60)
             #Change the overdue_days = 0
+            
+            book.type = "online_audio_book"
+            book.overdue_price = "15"
+            book.due_days = "60"
+            book.overdue_days = "0"
 
 def rent_book(books, rented, renting_book):
     if isinstance(renting_book, Book):
