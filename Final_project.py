@@ -209,9 +209,9 @@ def main(filepath):
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
     while True:
         for book in books:
-            if book.type == "audio_book":
+            if book.type == "audio_book" & book.type == "online_audio_book":
                 a_books.append(book)
-            if book.type == "paper_book":
+            if book.type == "paper_book" & book.type == "online_book":
                 p_books.append(book)
         for audio in a_books:
             str = audio.__str__()
