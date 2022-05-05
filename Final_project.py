@@ -198,20 +198,27 @@ def main(filepath):
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
     for book in books:
-        if book.type == "audio_book" & book.type == "online_audio_book":
+        if book.type == "audio_book":# book.type == "online_audio_book":
             a_books.append(book)
-        if book.type == "paper_book" & book.type == "online_book":
+        if book.type == "paper_book": # book.type == "online_book":
             p_books.append(book)
-        if book :
-            #not rented
-        if book :
-            #rented
+        # if book :
+        #     #not rented
+        # if book :
+        #     #rented
+        #     break
+    count = 1
     for audio in a_books:
+        print(f"Audio Book #{count}")
         str = audio.__str__()
         print(str)
+        count+=1
+    a_count = 1
     for paper in p_books:
+        print(f"Paper Book #{a_count}")
         str = paper.__str__()
         print(str)
+        a_count+=1
     while True:
         #Rent/Return/due pay, etc. with user input. You want to print out
         #changes that you make or print the entire list?
