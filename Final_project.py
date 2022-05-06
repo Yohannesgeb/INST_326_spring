@@ -83,7 +83,7 @@ class Paper_book(Book):
                 due_days, overdue_days)
     
     def __str__(self):
-        str = (f"Paper Book ID: {self.book_id}"
+        str = (f"Paper Book ID: {self.book_id} / "
                f"Paper Book title: {self.title}")
         return str
 
@@ -102,7 +102,7 @@ class Audio_book(Book):
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
     
     def __str__(self):
-        str = (f"Audio Book ID: {self.book_id} \ "
+        str = (f"Audio Book ID: {self.book_id} / "
                f"Audio Book title: {self.title}")
         return str
 
@@ -115,7 +115,7 @@ def book_info(books):
                     print('This Book is not a Book object')
                     books.remove(book)
                     return
-        str = f"Book#{count} {book.__str__()}"
+        str = f"Book {count}. ({book.__str__()})"
         print(str)
         count += 1
         
@@ -191,7 +191,19 @@ def main(filepath):
         if user == 1:
             print('\n====== View Books ======\n'
                     '====== All Books ======\n')
-            book_info(books)
+            books.sort(key=lambda x: x.book_id)
+            count = 1
+            for book in books:
+                str = (f"Book {count}. (Book ID: {book.book_id} / "
+                       f"Book title: {book.title} / "
+                       f"Book published year: {book.title} / "
+                       f"Book type: {book.type} / "
+                       f"Book overdue price: {book.overdue_price} / "
+                       f"Book due days: {book.due_days} / "
+                       f"Book overdue days: {book.overdue_days})"
+                    )
+                print(str)
+                count += 1
             print('Select Option: (1) Not Rented (2) Rented (3) Audio'
             '(4) Paper')
             user1 = int(input('\n-----USER INPUT: '))
