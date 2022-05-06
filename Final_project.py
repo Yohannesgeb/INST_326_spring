@@ -64,12 +64,16 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
-        return f"""Book ID: {self.book_id}.\nBook title: {self.title}.\n"""
+        str = (f"Book ID: {self.book_id}"
+               f"Book title: {self.title}.\n"
+               )
+        return str
     
     def __repr__(self):
-        return f"""Book({self.book_id},{self.type},{self.title},
-                   {self.pub_year},{self.copies},{self.overdue_price},
-                   {self.due_days},{self.overdue_days})"""
+        str = (f"Book({self.book_id},{self.type},{self.title},"
+               f"{self.pub_year},{self.copies},{self.overdue_price},"
+               f"{self.due_days},{self.overdue_days})")
+        return str
 
     def rented(self):
         self.copies += 1
@@ -272,7 +276,6 @@ def main(filepath):
                         rent_book(nr_books, r_books, book1)
                         if book1 in r_books:
                             print(f'You have rented {book1.title}')
-                
             elif user1 == 2:
                 print('==== Return ====')
                 user2 = int(input("Enter Book ID: "))
