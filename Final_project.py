@@ -222,15 +222,15 @@ def main(filepath):
             r_books.append(book)
     a_count = 1
     for audio in a_books:
-        print(f"Audio Book #{a_count}")
+        # print(f"Audio Book #{a_count}")
         str = audio.__str__()
-        print(str)
+        # print(str)
         a_count += 1
     p_count = 1
     for paper in p_books:
-        print(f"Paper Book #{p_count}")
+        # print(f"Paper Book #{p_count}")
         str = paper.__str__()
-        print(str)
+        # print(str)
         p_count += 1
     nr_count = 1
     for nr_book in nr_books:
@@ -240,9 +240,9 @@ def main(filepath):
         nr_count += 1
     r_count = 1
     for r_book in r_books:
-        print (f"Rented Book #{r_count}")
+        # print (f"Rented Book #{r_count}")
         str = r_book.__str__()
-        print(str)
+        # print(str)
         r_count += 1
     
     
