@@ -70,7 +70,7 @@ class Book:
         return str
 
     def rented(self):
-        self.copies += 1
+        self.copies -= 1
         self.due_days = 7
 
     def returned(self):
