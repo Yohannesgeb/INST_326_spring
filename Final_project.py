@@ -64,8 +64,8 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
-        str = (f"Book ID: {self.book_id}"
-               f"Book title: {self.title}.\n"
+        str = (f"Book ID: {self.book_id} / "
+               f"Book title: {self.title}"
                )
         return str
     
@@ -101,8 +101,8 @@ class Paper_book(Book):
         self.type = type
     
     def __str__(self):
-        str = (f"Paper Book ID: {self.book_id}.\n"
-               f"Paper Book title: {self.title}.\n")
+        str = (f"Paper Book ID: {self.book_id}"
+               f"Paper Book title: {self.title}")
         return str
 
 class Audio_book(Book):
@@ -120,7 +120,7 @@ class Audio_book(Book):
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
     
     def __str__(self):
-        return f"Audio Book ID: {self.book_id}.\nAudio Book title: {self.title}.\n"
+        return f"Audio Book ID: {self.book_id} Audio Book title: {self.title}"
 
 #Functions
 def isOnline(book):
@@ -212,78 +212,91 @@ def main(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
-            books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
+            book = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
+            audio = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
+            paper = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
+            nr_book = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
+            r_book = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
+            books.append(book)
+            if book_type == "audio_book":
+                a_books.append(audio)
+            if book_type == "paper_book":
+                p_books.append(paper)
+            if int(due_days) == -1:
+                nr_books.append(nr_book)
+            if int(due_days) >= 0:
+                r_books.append(r_book)
+            print(f"Due days: {nr_book.due_days} \ Overdue Days: {nr_book.overdue_days}")
+
             # if book_type == "audio_book":
             #     a_books.append(Audio_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
-    for book in books:
-        if book.type == "audio_book": # book.type == "online_audio_book":
-            a_books.append(book)
-        if book.type == "paper_book": # book.type == "online_book":
-            p_books.append(book)
-        if book.due_days == -1:
-            nr_books.append(book)
-        if book.due_days != -1:
-            r_books.append(book)
-    a_count = 1
-    for audio in a_books:
-        # print(f"Audio Book #{a_count}")
-        str = audio.__str__()
-        # print(str)
-        a_count += 1
-    p_count = 1
-    for paper in p_books:
-        # print(f"Paper Book #{p_count}")
-        str = paper.__str__()
-        # print(str)
-        p_count += 1
-    nr_count = 1
-    for nr_book in nr_books:
-        print (f"Not rented book#{nr_count}")
-        str = nr_book.__str__()
-        print(str)
-        nr_count += 1
-    r_count = 1
-    for r_book in r_books:
-        # print (f"Rented Book #{r_count}")
-        str = r_book.__str__()
-        # print(str)
-        r_count += 1
+    # a_count = 1
+    # for audio in a_books:
+    #     # print(f"Audio Book #{a_count}")
+    #     str = audio.__str__()
+    #     # print(str)
+    #     a_count += 1
+    # p_count = 1
+    # for paper in p_books:
+    #     # print(f"Paper Book #{p_count}")
+    #     str = paper.__str__()
+    #     # print(str)
+    #     p_count += 1
+    # nr_count = 1
+    # for nr_book in nr_books:
+    #     print (f"Not rented book#{nr_count}")
+    #     str = nr_book.__str__()
+    #     print(str)
+    #     nr_count += 1
+    # r_count = 1
+    # for r_book in r_books:
+    #     # print (f"Rented Book #{r_count}")
+    #     str = r_book.__str__()
+    #     # print(str)
+    #     r_count += 1
     
     
     while True:
         print ('===== Books Menu ======\n'
-               '(1) All books.\n'
-               '(2) Rent/Return Books\n'
-               '(3) Pay Dues\n'
+               '(1) All books. '
+               '(2) Rent/Return Books '
+               '(3) Pay Dues '
                '(4) Exit the program')
         user = int(input('User input: '))
         if user == 1:
-            break
+            print('\n==== All Books ====')
+            count = 1
+            for book in books:
+                str = f"Book#{count} {book.__str__()}"
+                print(str)
+                count += 1
         elif user == 2:
-            print('==== Rent/Return ====')
-            print('(1) Rent\n'
+            print('\n==== Rent/Return ====\n')
+            print('(1) Rent '
                   '(2) Return')
             user1 = int(input('User input: '))
             if user1 == 1:
-                print('==== Rent ====')
+                print('\n==== Rent ====\n')
                 print('Available Books to rent\n')
+                count = 1
                 for book in nr_books:
-                    print(f'Book ID: {book.book_id}\n'
-                          f'Title: {book.title}\n')
+                    str = (f'({count}) Book ID: {book.book_id} \ '
+                          f'Title: {book.title}')
+                    print(str)
+                    count += 1
                 user2 = int(input("Enter Book ID: "))
                 for book1 in nr_books:
                     if book1.book_id == user2:
+                        print("YES")
                         rent_book(nr_books, r_books, book1)
                         if book1 in r_books:
                             print(f'You have rented {book1.title}')
-            elif user1 == 2:
-                print('==== Return ====')
+            if user1 == 2:
+                print('\n==== Return ====\n')
                 user2 = int(input("Enter Book ID: "))
                 for book in books:
                     if book.book_id == user2:
                         return_book(nr_books, r_books, book)
-            else:
-                raise ValueError('Invalid value input')
         elif user == 3:
             break
         elif user == 4:
