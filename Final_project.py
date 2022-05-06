@@ -86,7 +86,6 @@ class Paper_book(Book):
                 overdue_price = 0, due_days = -1, overdue_days = 0):
         super().__init__(book_id, title, pub_year, type, overdue_price,
                 due_days, overdue_days)
-        self.type = type
     
     def __str__(self):
         str = (f"Paper Book ID: {self.book_id}"
@@ -113,70 +112,22 @@ class Audio_book(Book):
         return str
         
 def rent_book(books, rented, book):
-    if isinstance(book, Book) == False:
-        
-    count = 0
-    for b in books:
-        if b.book_id == book.book_id:
-            if count == 0:
-                books.remove(b)
-                count = 1
-    for r in rented:
-        if r.book_id == a.book_id:
-            num = r.copies + 1
-    a.copies -= 1
-    for r in rented:
-        if r.book_id == a.book_id:
-            r.copies = num
-            count = 2
-    if count == 2:
-        print(f'You have rented {book.title}'
+    for a in books:
+        if a.book_id == book.book_id:
+            books.remove(book)
+            rented.append(book)
+            print(f'You have rented {book.title}'
                 f'with Book ID#{book.book_id}')
-    # num_copies = 0
-    # num = 0
-    # pop = 0
-    # for book in books:
-    #     if pop == 0:
-    #         if renting_book.book_id == book.book_id:
-    #             a = books.pop(book)
-    #             pop += 1
-    #             book.copies -= 1
-    #             num += book.copies
-    #     else:
-    #         book.copies = num
-    # if a in rented:
-    #     for rent in rented:
-    #         if 
-    # if renting_book in rented:
-    #     rents = [a for a in rented if a.book_id == renting_book.book_id]
-    #     for rent in rented:
-    #         rent.copies += 1
-    #         num_copies += rent.copies
-    # renting_book.copies = num_copies
-    # rented.append(renting_book)
+            return
 
-def return_book(books, rented, return_book):
-    if isinstance(return_book, Book):
-        print("You can return the book!")
-    else:
-        raise TypeError("Please enter a correct type")
-    return_book.returned()
-    num_copies = 0
-    for book in books:
-        if isinstance(book, Book):
-            if book.book_id == return_book.book_id:
-                book.copies += 1
-                num_copies += book.copies
-    return_book.copies = num_copies
-    books.append(return_book)
-    changed = 0
-    for rent in rented:
-        if isinstance(rent, Book):
-            if rent.book_id == return_book.book_id:
-                changed += 1
-                rent.copies -= 1
-    if changed > 0:
-        rented.remove(return_book)
+def return_book(books, rented, book):
+    for a in rented:
+        if a.book_id == book.book_id:
+            rented.remove(book)
+            books.append(book)
+            print(f'You have rented {book.title}'
+                f'with Book ID#{book.book_id}')
+            return
 
 def main(filepath):
     """The main function
@@ -197,18 +148,17 @@ def main(filepath):
     
     with open(filepath, "r", encoding="utf-8") as f:
         for line in f:
-            book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
+            book_id, title, pub_year, book_type , overdue_price , due_days , overdue_days = line.strip().split(',')
             book_id = int(book_id)
             pub_year = int(pub_year)
-            copies = int(copies)
             overdue_price = float(overdue_price)
             due_days = int(due_days)
             overdue_days = int(overdue_days)
-            book = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
-            audio = Audio_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
-            paper = Paper_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
-            nr_book = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
-            r_book = Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days)
+            book = Book(book_id, title, pub_year, book_type , overdue_price , due_days , overdue_days)
+            audio = Audio_book(book_id, title, pub_year, book_type , overdue_price , due_days , overdue_days)
+            paper = Paper_book(book_id, title, pub_year, book_type , overdue_price , due_days , overdue_days)
+            nr_book = Book(book_id, title, pub_year, book_type , overdue_price , due_days , overdue_days)
+            r_book = Book(book_id, title, pub_year, book_type , overdue_price , due_days , overdue_days)
             books.append(book)
             if book_type == "audio_book":
                 a_books.append(audio)
@@ -285,9 +235,6 @@ def main(filepath):
                 for book1 in nr_books:
                     if book1.book_id == user2:
                         rent_book(nr_books, r_books, book1)
-                        if book1 in r_books:
-                            print(f'You have rented {book1.title}'
-                                  f'with Book ID#{book1.book_id}')
                         change += 1
                     if change >= 1:
                         pass
@@ -304,9 +251,6 @@ def main(filepath):
                 for book1 in r_books:
                     if book1.book_id == user2:
                         return_book(nr_books, r_books, book1)
-                        if book1 in nr_books:
-                            print(f'You have returned {book1.title}'
-                                  f'with Book ID#{book1.book_id}')
                         break
             else:
                 print('Invalid value input. Please try again.')
