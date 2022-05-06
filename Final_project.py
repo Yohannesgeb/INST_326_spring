@@ -24,11 +24,11 @@ class Book:
         Copies (int): Number of Book's copies, expressed as int value.
         Default int value is 1.
 
-        Days until due (str): -1 when it has not been rented out.
-
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float.
         Default float value is 0.
+
+        Days until due (str): -1 when it has not been rented out.
 
         Days of overdue (int): Number of overdue days, expressed as
         integer value. Default value is 0.
@@ -209,54 +209,86 @@ def main(filepath):
         for line in f:
             book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days = line.strip().split(',')
             books.append(Book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
-            if book_type == "audio_book":
-                a_books.append(Audio_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
+            # if book_type == "audio_book":
+            #     a_books.append(Audio_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
     for book in books:
         if book.type == "audio_book": # book.type == "online_audio_book":
             a_books.append(book)
         if book.type == "paper_book": # book.type == "online_book":
             p_books.append(book)
-        if book.type == "notrented_book":
+        if book.due_days == -1:
             nr_books.append(book)
-        if book.type == "rented_book":
+        if book.due_days != -1:
             r_books.append(book)
     a_count = 1
     for audio in a_books:
         print(f"Audio Book #{a_count}")
         str = audio.__str__()
         print(str)
-        a_count+=1
+        a_count += 1
     p_count = 1
     for paper in p_books:
         print(f"Paper Book #{p_count}")
         str = paper.__str__()
         print(str)
-        p_count+=1
-    nr_count = -1
-    for rented_book in nr_books:
+        p_count += 1
+    nr_count = 1
+    for nr_book in nr_books:
         print (f"Not rented book#{nr_count}")
-        str = rented_book.__str__()
+        str = nr_book.__str__()
         print(str)
-        nr_count += -1
+        nr_count += 1
     r_count = 1
-    for rented_book in r_books:
+    for r_book in r_books:
         print (f"Rented Book #{r_count}")
-        str = rent_book.__str__()
+        str = r_book.__str__()
         print(str)
-        r_books += 1
+        r_count += 1
     
     
     while True:
-        rent_book in r_books 
-        print ('===== Books Menu ======')
-        user = int(input("Enter choice: ")) 
-
-        
-        print ()
+        print ('===== Books Menu ======\n'
+               '(1) All books.\n'
+               '(2) Rent/Return Books\n'
+               '(3) Pay Dues\n'
+               '(4) Exit the program')
+        user = int(input('User input: '))
+        if user == 1:
+            break
+        elif user == 2:
+            print('==== Rent/Return ====')
+            print('(1) Rent\n'
+                  '(2) Return')
+            user1 = int(input('User input: '))
+            if user1 == 1:
+                print('==== Rent ====')
+                print('Available Books to rent\n')
+                for book in nr_books:
+                    print(f'Book ID: {book.book_id}\n'
+                          f'Title: {book.title}\n')
+                user2 = int(input("Enter Book ID: "))
+                for book1 in nr_books:
+                    if book1.book_id == user2:
+                        rent_book(nr_books, r_books, book1)
+                        if book1 in r_books:
+                            print(f'You have rented {book1.title}')
+                
+            elif user1 == 2:
+                print('==== Return ====')
+                user2 = int(input("Enter Book ID: "))
+                for book in books:
+                    if book.book_id == user2:
+                        return_book(nr_books, r_books, book)
+            else:
+                raise ValueError('Invalid value input')
+        elif user == 3:
+            break
+        elif user == 4:
+            return
+        else:
+            raise ValueError('Invalid value input')
         #Rent/Return/due pay, etc. with user input. You want to print out
         #changes that you make or print the entire list?
-        break
-    return
 
 
   
