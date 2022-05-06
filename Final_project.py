@@ -140,8 +140,7 @@ def rent_book(books, rented, renting_book):
 
 def return_book(books, rented, return_book):
     if isinstance(return_book, Book):
-        if isinstance(books, list[Book]) & isinstance(rented, list[Book]):
-            print("You can return the book!")
+        print("You can return the book!")
     else:
         raise TypeError("Please enter a correct type")
     return_book.returned()
@@ -205,20 +204,37 @@ def main(filepath):
             print(f"Book ID: {nr_book.book_id} \ Overdue Days: {nr_book.overdue_days}")
     while True:
         print ('\n===== Books Menu ======\n'
-               '(1) View books. '
+               'Select Option: (1) View books '
                '(2) Rent/Return Books '
                '(3) Exit the program')
         user = int(input('User input: '))
         if user == 1:
-            print('\n==== View Books ====\n')
+            print('\n====== View Books ======\n')
+            print('\n====== All Books ======\n')
             count = 1
             for book in books:
                 str = f"Book#{count} {book.__str__()}"
                 print(str)
                 count += 1
+            print('\nSelect Option: (1) Not Rented (2) Rented')
+            user1 = int(input('User input: '))
+            if user1 == 1:
+                print('\n====== Not Rented ======\n')
+                count1 = 1
+                for book in nr_books:
+                    str = f"Book#{count1} {book.__str__()}"
+                    print(str)
+                    count1 += 1
+            elif user1 == 2:
+                print('\n====== Rented ======\n')
+                count1 = 1
+                for book in r_books:
+                    str = f"Book#{count1} {book.__str__()}"
+                    print(str)
+                    count1 += 1
         elif user == 2:
             print('\n==== Rent/Return ====\n')
-            print('(1) Rent '
+            print('Select Option: (1) Rent '
                   '(2) Return')
             user1 = int(input('User input: '))
             if user1 == 1:
@@ -235,13 +251,24 @@ def main(filepath):
                     if book1.book_id == user2:
                         rent_book(nr_books, r_books, book1)
                         if book1 in r_books:
-                            print(f'You have rented {book1.title}')
+                            print(f'You have rented {book1.title}'
+                                  f'with Book ID#{book1.book_id}')
             elif user1 == 2:
                 print('\n==== Return ====\n')
+                print('\n==== Rented Books ====')
+                count = 1
+                for book in r_books:
+                    str = (f'({count}) Book ID: {book.book_id} \ '
+                          f'Title: {book.title}')
+                    print(str)
+                    count += 1
                 user2 = int(input("Enter Book ID: "))
-                for book in books:
-                    if book.book_id == user2:
-                        return_book(nr_books, r_books, book)
+                for book1 in r_books:
+                    if book1.book_id == user2:
+                        return_book(nr_books, r_books, book1)
+                        if book1 in nr_books:
+                            print(f'You have returned {book1.title}'
+                                  f'with Book ID#{book1.book_id}')
             else:
                 print('Invalid value input. Please try again.')
         elif user == 3:
