@@ -58,12 +58,22 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
+        """ 
+         
+         return (str)
+        """
         str = (f"Book ID: {self.book_id} / "
                f"Book title: {self.title}"
                )
         return str
 
     def rented(self):
+<<<<<<< HEAD
+=======
+        """
+        """
+        self.copies -= 1
+>>>>>>> main
         self.due_days = 7
 
     def returned(self):
@@ -73,24 +83,77 @@ class Book:
             return True
 
 class Paper_book(Book):
-    """Paper Book
+    """Paper Book inhertance the book object all its attributes 
+    Attributes:
+        Book ID (int): Unique ID number of the indivdual books that are
+        avaliable, expressed as integers.
 
-        Attributes:
+        Title (str): The title of the individual books represented as a string.
+
+        Publication year (int): The year the indivdual book was published, 
+        expressed by a 4-digit integer.
+
+        Type (str): Type of a book, expressed as string value.
+
+        Copies (int): Number of Book's copies, expressed as int value.
+        Default int value is 1.
+
+        Overdue price (float): Overdue price of a book, price increases 
+        per day late based on rent_dur, expressed as a float.
+        Default float value is 0.
+
+        Days until due (str): -1 when it has not been rented out.
+
+        Days of overdue (int): Number of overdue days, expressed as
+        integer value. Default value is 0.
     """
     def __init__(self, book_id, title, pub_year, type = "paper_book", 
                 overdue_price = 0, due_days = -1, overdue_days = 0):
+<<<<<<< HEAD
         super().__init__(book_id, title, pub_year, type, overdue_price,
                 due_days, overdue_days)
     
     def __str__(self):
         str = (f"Paper Book ID: {self.book_id} / "
+=======
+        """This methode Initialize a Book object."""
+        super().__init__(book_id, title, pub_year, type, copies, 
+                overdue_price, due_days, overdue_days)
+        self.type = type
+    
+    def __str__(self):
+        """ this methode 
+        args:
+            return (str)"""
+        str = (f"Paper Book ID: {self.book_id}"
+>>>>>>> main
                f"Paper Book title: {self.title}")
         return str
 
 class Audio_book(Book):
-    """Audio Book
+    """Audio Book inhertance the book object and all its attributes 
+    Attributes:
+        Book ID (int): Unique ID number of the indivdual books that are
+        avaliable, expressed as integers.
 
-        Attributes:
+        Title (str): The title of the individual books represented as a string.
+
+        Publication year (int): The year the indivdual book was published, 
+        expressed by a 4-digit integer.
+
+        Type (str): Type of a book, expressed as string value.
+
+        Copies (int): Number of Book's copies, expressed as int value.
+        Default int value is 1.
+
+        Overdue price (float): Overdue price of a book, price increases 
+        per day late based on rent_dur, expressed as a float.
+        Default float value is 0.
+
+        Days until due (str): -1 when it has not been rented out.
+
+        Days of overdue (int): Number of overdue days, expressed as
+        integer value. Default value is 0.
     """
     def __init__(self, book_id, title, pub_year, type = "audio_book", 
                 overdue_price = 0, due_days = -1, overdue_days = 0):
@@ -106,8 +169,25 @@ class Audio_book(Book):
                f"Audio Book title: {self.title}")
         return str
 
+<<<<<<< HEAD
 def book_info(books):
     count = 1
+=======
+def rent_book(books, rented, renting_book):
+    """
+    args:
+        books(str):
+        rented(str):
+        renting_books(str):
+        return(str): list of books for rent 
+    """
+    if isinstance(renting_book, Book):
+        print("You can rent the book!")
+    else:
+        raise TypeError("Please enter a correct type")
+    renting_book.rented()
+    changed = 0
+>>>>>>> main
     for book in books:
         if ((not isinstance(book, Book)) &
             (not isinstance(book, Audio_book)) &
@@ -129,6 +209,7 @@ def rent_book(books, rented, book):
                   f'with Book ID# {book.book_id}')
             return
 
+<<<<<<< HEAD
 def return_book(books, rented, book):
     for a in rented:
         if a.book_id == book.book_id:
@@ -138,6 +219,39 @@ def return_book(books, rented, book):
             print(f'You have returned {book.title}'
                   f'with Book ID# {book.book_id}')
             return
+=======
+def return_book(books, rented, return_book):
+    """
+    args:
+        books(str):
+        rented(str):
+        return_book(str):
+        return(str): list of books to be returned 
+    
+    
+    """
+    if isinstance(return_book, Book):
+        print("You can return the book!")
+    else:
+        raise TypeError("Please enter a correct type")
+    return_book.returned()
+    num_copies = 0
+    for book in books:
+        if isinstance(book, Book):
+            if book.book_id == return_book.book_id:
+                book.copies += 1
+                num_copies += book.copies
+    return_book.copies = num_copies
+    books.append(return_book)
+    changed = 0
+    for rent in rented:
+        if isinstance(rent, Book):
+            if rent.book_id == return_book.book_id:
+                changed += 1
+                rent.copies -= 1
+    if changed > 0:
+        rented.remove(return_book)
+>>>>>>> main
 
 def main(filepath):
     """The main function
