@@ -114,29 +114,25 @@ class Audio_book(Book):
 def rent_book(books, rented, book):
     for a in books:
         if a.book_id == book.book_id:
-            books.remove(book)
-            rented.append(book)
+            books.remove(a)
+            rented.append(a)
+            rented.sort(key=lambda x: x.book_id)
             print(f'You have rented {book.title}'
-                f'with Book ID#{book.book_id}')
+                  f'with Book ID# {book.book_id}')
             return
 
 def return_book(books, rented, book):
     for a in rented:
         if a.book_id == book.book_id:
-            rented.remove(book)
-            books.append(book)
+            rented.remove(a)
+            books.append(a)
+            books.sort(key=lambda x: x.book_id)
             print(f'You have rented {book.title}'
-                f'with Book ID#{book.book_id}')
+                  f'with Book ID# {book.book_id}')
             return
 
 def main(filepath):
     """The main function
-    Recommended tasks:
-    - Using with to extract the files accordingly
-    - Create list of rented books and not rented books.
-    - Change attributes accordingly like changing number of copies.
-    - Renting a book out
-    - Returning the book out
     
         Returns: 
     """
@@ -177,7 +173,7 @@ def main(filepath):
                'Select Option: (1) View books '
                '(2) Rent/Return Books '
                '(3) Exit the program')
-        user = int(input('User input: '))
+        user = int(input('\nUSER INPUT: '))
         if user == 1:
             print('\n====== View Books ======\n')
             print('\n====== All Books ======\n')
@@ -188,39 +184,39 @@ def main(filepath):
                 count += 1
             print('\nSelect Option: (1) Not Rented (2) Rented (3) Audio'
             '(4) Paper')
-            user1 = int(input('User input: '))
+            user1 = int(input('\n-----USER INPUT: '))
             if user1 == 1:
                 print('\n====== Not Rented ======\n')
                 count1 = 1
                 for book in nr_books:
-                    str = f"Book#{count1} {book.__str__()}"
+                    str = f"#{count1}. {book.__str__()}"
                     print(str)
                     count1 += 1
             elif user1 == 2:
                 print('\n====== Rented ======\n')
                 count1 = 1
                 for book in r_books:
-                    str = f"Book#{count1} {book.__str__()}"
+                    str = f"#{count1}. {book.__str__()}"
                     print(str)
                     count1 += 1
             elif user1 == 3:
                 print('\n====== Audio ======\n')
                 count1 = 1
                 for book in a_books:
-                    str = f"Book#{count1} {book.__str__()}"
+                    str = f"#{count1}. {book.__str__()}"
                     print(str)
                     count1 += 1
             elif user1 == 4:
                 print('\n====== Paper ======\n')
                 count1 = 1
                 for book in p_books:
-                    str = f"Book#{count1} {book.__str__()}"
+                    str = f"#{count1}. {book.__str__()}"
                     print(str)
                     count1 += 1
         elif user == 2:
             print('\n====== Rent/Return ======\n')
-            print('Select Option: (1) Rent (2) Return')
-            user1 = int(input('User input: '))
+            print('\nSelect Option: (1) Rent (2) Return')
+            user1 = int(input('-----USER INPUT: '))
             if user1 == 1:
                 print('\n====== Rent ======\n')
                 print('\nAvailable Books to rent\n')
@@ -230,24 +226,21 @@ def main(filepath):
                            f'Title: {book.title}')
                     print(str)
                     count += 1
-                change = 0
-                user2 = int(input("Enter Book ID: "))
+                user2 = int(input("\n-----ENTER BOOK ID: "))
                 for book1 in nr_books:
                     if book1.book_id == user2:
                         rent_book(nr_books, r_books, book1)
-                        change += 1
-                    if change >= 1:
-                        pass
+                        break
             elif user1 == 2:
                 print('\n====== Return ======\n')
-                print('\n====== Rented Books ======')
+                print('\n====== Rented Books ======\n')
                 count = 1
                 for book in r_books:
                     str = (f'({count}) Book ID: {book.book_id} \ '
                           f'Title: {book.title}')
                     print(str)
                     count += 1
-                user2 = int(input("Enter Book ID: "))
+                user2 = int(input("\n-----ENTER BOOK ID: "))
                 for book1 in r_books:
                     if book1.book_id == user2:
                         return_book(nr_books, r_books, book1)
