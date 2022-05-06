@@ -226,7 +226,7 @@ def main(filepath):
                 nr_books.append(nr_book)
             if int(due_days) >= 0:
                 r_books.append(r_book)
-            print(f"Due days: {nr_book.due_days} \ Overdue Days: {nr_book.overdue_days}")
+            print(f"Book ID: {nr_book.book_id} \ Overdue Days: {nr_book.overdue_days}")
 
             # if book_type == "audio_book":
             #     a_books.append(Audio_book(book_id, title, pub_year, book_type , copies , overdue_price , due_days , overdue_days))
@@ -257,14 +257,14 @@ def main(filepath):
     
     
     while True:
-        print ('===== Books Menu ======\n'
+        print ('\n===== Books Menu ======\n'
                '(1) All books. '
                '(2) Rent/Return Books '
                '(3) Pay Dues '
                '(4) Exit the program')
         user = int(input('User input: '))
         if user == 1:
-            print('\n==== All Books ====')
+            print('\n==== All Books ====\n')
             count = 1
             for book in books:
                 str = f"Book#{count} {book.__str__()}"
@@ -277,7 +277,7 @@ def main(filepath):
             user1 = int(input('User input: '))
             if user1 == 1:
                 print('\n==== Rent ====\n')
-                print('Available Books to rent\n')
+                print('\nAvailable Books to rent\n')
                 count = 1
                 for book in nr_books:
                     str = (f'({count}) Book ID: {book.book_id} \ '
