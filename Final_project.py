@@ -34,8 +34,8 @@ class Book:
         integer value. Default value is 0.
         """
 
-    def __init__(self, book_id, title, pub_year, type, copies = 1, 
-                overdue_price = 0, due_days = -1, overdue_days = 0):
+    def __init__(self, book_id, title, pub_year, type, overdue_price = 0,
+                    due_days = -1, overdue_days = 0):
         """Initialize a Book object.
 
         Args:
@@ -56,7 +56,6 @@ class Book:
         self.type = type
         self.title = title
         self.pub_year = pub_year
-        self.copies = copies
         self.overdue_price = overdue_price
         self.due_days = due_days
         self.overdue_days = overdue_days
@@ -70,12 +69,10 @@ class Book:
         return str
 
     def rented(self):
-        self.copies -= 1
         self.due_days = 7
 
     def returned(self):
         if self.overdue_price == 0:
-            self.copies += 1
             self.due_days = -1
             self.overdue_days = 0
             return True
@@ -85,10 +82,10 @@ class Paper_book(Book):
 
         Attributes:
     """
-    def __init__(self, book_id, title, pub_year, type = "paper_book", copies = 1, 
+    def __init__(self, book_id, title, pub_year, type = "paper_book", 
                 overdue_price = 0, due_days = -1, overdue_days = 0):
-        super().__init__(book_id, title, pub_year, type, copies, 
-                overdue_price, due_days, overdue_days)
+        super().__init__(book_id, title, pub_year, type, overdue_price,
+                due_days, overdue_days)
         self.type = type
     
     def __str__(self):
@@ -101,9 +98,9 @@ class Audio_book(Book):
 
         Attributes:
     """
-    def __init__(self, book_id, title, pub_year, type = "audio_book", copies = 1, 
+    def __init__(self, book_id, title, pub_year, type = "audio_book", 
                 overdue_price = 0, due_days = -1, overdue_days = 0):
-        super().__init__(book_id, title, pub_year, type, copies, 
+        super().__init__(book_id, title, pub_year, type, 
                 overdue_price, due_days, overdue_days)
 
     def rented(self):
@@ -114,29 +111,49 @@ class Audio_book(Book):
         str = (f"Audio Book ID: {self.book_id} \ "
                f"Audio Book title: {self.title}")
         return str
-
-def rent_book(books, rented, renting_book):
-    if isinstance(renting_book, Book):
-        print("You can rent the book!")
-    else:
-        raise TypeError("Please enter a correct type")
-    renting_book.rented()
-    changed = 0
-    for book in books:
-        if isinstance(book, Book):
-            if book.book_id == renting_book.book_id:
-                changed += 1
-                book.copies -= 1
-    if changed > 0:
-        books.remove(book)
-    num_copies = 0
-    for rent in rented:
-        if isinstance(rent, Book):
-            if rent.book_id == renting_book.book_id:
-                rent.copies += 1
-                num_copies += rent.copies
-    renting_book.copies = num_copies
-    rented.append(renting_book)
+        
+def rent_book(books, rented, book):
+    if isinstance(book, Book) == False:
+        
+    count = 0
+    for b in books:
+        if b.book_id == book.book_id:
+            if count == 0:
+                books.remove(b)
+                count = 1
+    for r in rented:
+        if r.book_id == a.book_id:
+            num = r.copies + 1
+    a.copies -= 1
+    for r in rented:
+        if r.book_id == a.book_id:
+            r.copies = num
+            count = 2
+    if count == 2:
+        print(f'You have rented {book.title}'
+                f'with Book ID#{book.book_id}')
+    # num_copies = 0
+    # num = 0
+    # pop = 0
+    # for book in books:
+    #     if pop == 0:
+    #         if renting_book.book_id == book.book_id:
+    #             a = books.pop(book)
+    #             pop += 1
+    #             book.copies -= 1
+    #             num += book.copies
+    #     else:
+    #         book.copies = num
+    # if a in rented:
+    #     for rent in rented:
+    #         if 
+    # if renting_book in rented:
+    #     rents = [a for a in rented if a.book_id == renting_book.book_id]
+    #     for rent in rented:
+    #         rent.copies += 1
+    #         num_copies += rent.copies
+    # renting_book.copies = num_copies
+    # rented.append(renting_book)
 
 def return_book(books, rented, return_book):
     if isinstance(return_book, Book):
@@ -195,13 +212,16 @@ def main(filepath):
             books.append(book)
             if book_type == "audio_book":
                 a_books.append(audio)
+                a_books.sort(key=lambda x: x.book_id)
             if book_type == "paper_book":
                 p_books.append(paper)
+                p_books.sort(key=lambda x: x.book_id)
             if int(due_days) == -1:
                 nr_books.append(nr_book)
+                nr_books.sort(key=lambda x: x.book_id)
             if int(due_days) >= 0:
                 r_books.append(r_book)
-            print(f"Book ID: {nr_book.book_id} \ Overdue Days: {nr_book.overdue_days}")
+                r_books.sort(key=lambda x: x.book_id)
     while True:
         print ('\n===== Books Menu ======\n'
                'Select Option: (1) View books '
@@ -216,7 +236,8 @@ def main(filepath):
                 str = f"Book#{count} {book.__str__()}"
                 print(str)
                 count += 1
-            print('\nSelect Option: (1) Not Rented (2) Rented')
+            print('\nSelect Option: (1) Not Rented (2) Rented (3) Audio'
+            '(4) Paper')
             user1 = int(input('User input: '))
             if user1 == 1:
                 print('\n====== Not Rented ======\n')
@@ -232,20 +253,34 @@ def main(filepath):
                     str = f"Book#{count1} {book.__str__()}"
                     print(str)
                     count1 += 1
+            elif user1 == 3:
+                print('\n====== Audio ======\n')
+                count1 = 1
+                for book in a_books:
+                    str = f"Book#{count1} {book.__str__()}"
+                    print(str)
+                    count1 += 1
+            elif user1 == 4:
+                print('\n====== Paper ======\n')
+                count1 = 1
+                for book in p_books:
+                    str = f"Book#{count1} {book.__str__()}"
+                    print(str)
+                    count1 += 1
         elif user == 2:
-            print('\n==== Rent/Return ====\n')
-            print('Select Option: (1) Rent '
-                  '(2) Return')
+            print('\n====== Rent/Return ======\n')
+            print('Select Option: (1) Rent (2) Return')
             user1 = int(input('User input: '))
             if user1 == 1:
-                print('\n==== Rent ====\n')
+                print('\n====== Rent ======\n')
                 print('\nAvailable Books to rent\n')
                 count = 1
                 for book in nr_books:
                     str = (f'({count}) Book ID: {book.book_id} \ '
-                          f'Title: {book.title}')
+                           f'Title: {book.title}')
                     print(str)
                     count += 1
+                change = 0
                 user2 = int(input("Enter Book ID: "))
                 for book1 in nr_books:
                     if book1.book_id == user2:
@@ -253,9 +288,12 @@ def main(filepath):
                         if book1 in r_books:
                             print(f'You have rented {book1.title}'
                                   f'with Book ID#{book1.book_id}')
+                        change += 1
+                    if change >= 1:
+                        pass
             elif user1 == 2:
-                print('\n==== Return ====\n')
-                print('\n==== Rented Books ====')
+                print('\n====== Return ======\n')
+                print('\n====== Rented Books ======')
                 count = 1
                 for book in r_books:
                     str = (f'({count}) Book ID: {book.book_id} \ '
@@ -269,6 +307,7 @@ def main(filepath):
                         if book1 in nr_books:
                             print(f'You have returned {book1.title}'
                                   f'with Book ID#{book1.book_id}')
+                        break
             else:
                 print('Invalid value input. Please try again.')
         elif user == 3:
