@@ -135,7 +135,7 @@ def return_book(books, rented, book):
             rented.remove(a)
             books.append(a)
             books.sort(key=lambda x: x.book_id)
-            print(f'You have rented {book.title}'
+            print(f'You have returned {book.title}'
                   f'with Book ID# {book.book_id}')
             return
 
