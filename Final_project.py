@@ -205,7 +205,7 @@ def main(filepath):
                 print(str)
                 count += 1
             print('Select Option: (1) Not Rented (2) Rented (3) Audio'
-            '(4) Paper')
+            ' (4) Paper')
             user1 = int(input('\n-----USER INPUT: '))
             if user1 == 1:
                 print('\n====== Not Rented ======\n')
