@@ -194,13 +194,13 @@ class Audio_book(Book):
 def rent_book(books, rented, renting_book):
     """
     args:
-        books(str):
+        books(str): 
 
         rented(str):
 
         renting_books(str):
 
-        return(str):
+        return(list):
     
     """
     if isinstance(renting_book, Book):
@@ -235,7 +235,7 @@ def return_book(books, rented, return_book):
 
         renting_books(str):
 
-        return(str):
+        return(list):
     """
     if isinstance(return_book, Book):
         print("You can return the book!")
@@ -263,10 +263,13 @@ def main(filepath):
     """The main function
 
         args:
-            filepath(str)
+            filepath(str):the file location of the csv file
+
+        The information about all the columns of the csv file
 
     
-        Returns: 
+        Returns:The information about all the columns of the csv file
+
     """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
@@ -373,10 +376,10 @@ def main(filepath):
             print('Invalid value input. Please try again.')
 
 if __name__ == "__main__":
-    filepath = "books.csv"
+    filepath = "books.csv" # main(filepath) can be called to run the program. filepath is a text file
     main(filepath)
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser()  # main(filepath) can be called to run the program. filepath is a text file
     parser.add_argument()
     parser.add_argument()
-# main(filepath) can be called to run the program. filepath is a text file
-    # main(filepath) can be called to run the program. filepath is a text file
+
+   
