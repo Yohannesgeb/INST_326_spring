@@ -92,7 +92,7 @@ class Book:
             return True
 
 class Paper_book(Book):
-    """Paper Book
+    """Paper Book inhrita the book object and all its attributes 
         Attributes
         Book ID (int): Unique ID number of the indivdual books that are
         avaliable, expressed as integers.
@@ -153,7 +153,7 @@ class Paper_book(Book):
         return str
 
 class Audio_book(Book):
-    """Audio Book inhrita in the book object and all its attributes 
+    """Audio Book inhrita the book object and all its attributes 
 
         Attributes: 
         Book ID (int): Unique ID number of the indivdual books that are
