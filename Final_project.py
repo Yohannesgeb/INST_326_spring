@@ -21,9 +21,6 @@ class Book:
 
         Type (str): Type of a book, expressed as string value.
 
-        Copies (int): Number of Book's copies, expressed as int value.
-        Default int value is 1.
-
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float.
         Default float value is 0.
