@@ -66,7 +66,7 @@ class Book:
     def __str__(self):
         """
         
-            return(str)
+            return(str): book id and book title
         """
         str = (f"Book ID: {self.book_id} / "
                f"Book title: {self.title}"
@@ -75,6 +75,7 @@ class Book:
 
     def rented(self):
         """
+
         """
         self.copies -= 1
         self.due_days = 7
@@ -121,16 +122,22 @@ class Paper_book(Book):
         Args:
             book_id (int): ID of indivdual book
 
-             Title (str): Title of book_id
+            Title (str): Title of book_id
 
             pub_year (int): Year as 4 digit integer representing the
             publication of the book.
 
+            type(str):
+
+            copies(int):
+
             overdue_price (float): A float that is determined by
             (rent_dur - rented_days) * price. Default to 5.
 
-            rent_dur (int): The amount of days the borrower chose to
-            rent a book.
+            due_days(int):
+
+            overdue_days(int)
+
         """
         super().__init__(book_id, title, pub_year, type, copies, 
                 overdue_price, due_days, overdue_days)
@@ -173,13 +180,33 @@ class Audio_book(Book):
     """
     def __init__(self, book_id, title, pub_year, type = "audio_book", copies = 1, 
                 overdue_price = 0, due_days = -1, overdue_days = 0):
+        """ Initialize a audio_Book object 
+      Args:
+            book_id (int): ID of indivdual book
+
+            Title (str): Title of book_id
+
+            pub_year (int): Year as 4 digit integer representing the
+            publication of the book.
+
+            type(str):
+
+            copies(int):
+
+            overdue_price (float): A float that is determined by
+            (rent_dur - rented_days) * price. Default to 5.
+
+            due_days(int):
+
+            overdue_days(int):
+        """
         super().__init__(book_id, title, pub_year, type, copies, 
                 overdue_price, due_days, overdue_days)
 
     def rented(self):
-        """
+        """ this methode determined by (rent_dur - rented_days) * price. Default to 5.
         
-    
+            return(int): price of overdue books
         """
         self.overdue_price = super().overdue_price + 5
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
@@ -187,7 +214,7 @@ class Audio_book(Book):
     def __str__(self):
         """
         
-        return(str): book id and book title
+        return(str):Audio books id and title
         """
         str = (f"Audio Book ID: {self.book_id} \ "
                f"Audio Book title: {self.title}")
