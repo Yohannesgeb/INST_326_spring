@@ -66,6 +66,7 @@ class Book:
     def __str__(self):
         """
         
+            return(str)
         """
         str = (f"Book ID: {self.book_id} / "
                f"Book title: {self.title}"
@@ -80,7 +81,8 @@ class Book:
 
     def returned(self):
         """
-        rerurn(bool):True 
+        
+        return(bool):True 
         """
         if self.overdue_price == 0:
             self.copies += 1
@@ -177,7 +179,6 @@ class Audio_book(Book):
     def rented(self):
         """
         
-        statement 
     
         """
         self.overdue_price = super().overdue_price + 5
@@ -185,6 +186,7 @@ class Audio_book(Book):
     
     def __str__(self):
         """
+        
         return(str): book id and book title
         """
         str = (f"Audio Book ID: {self.book_id} \ "
@@ -265,10 +267,8 @@ def main(filepath):
         args:
             filepath(str):the file location of the csv file
 
-        The information about all the columns of the csv file
-
     
-        Returns:The information about all the columns of the csv file
+            Returns:The information about all the columns of the csv file
 
     """
     nr_books = list()   #list of not rented books
