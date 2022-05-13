@@ -60,8 +60,7 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
-        """
-        
+        """ represent the book object as a string 
             return(str): book id and book title
         """
         str = (f"Book ID: {self.book_id} / "
@@ -70,21 +69,18 @@ class Book:
         return str
 
     def rented(self):
-        """
-
+        """ this method represent due days a books in the book object
         """
         self.due_days = 7
 
     def returned(self):
-        """
-        
+        """ this methode represent the returned books in the book object 
         return(bool):True 
         """
         if self.overdue_price == 0:
             self.due_days = -1
             self.overdue_days = 0
             return True
-
 class Paper_book(Book):
     """Paper Book inhrita the book object and all its attributes 
         Attributes
@@ -97,9 +93,6 @@ class Paper_book(Book):
         expressed by a 4-digit integer.
 
         Type (str): Type of a book, expressed as string value.
-
-        Copies (int): Number of Book's copies, expressed as int value.
-        Default int value is 1.
 
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float.
@@ -121,25 +114,23 @@ class Paper_book(Book):
             pub_year (int): Year as 4 digit integer representing the
             publication of the book.
 
-            type(str):
-
-            copies(int):
+            type(str): Type of a book, expressed as string value.
 
             overdue_price (float): A float that is determined by
             (rent_dur - rented_days) * price. Default to 5.
 
-            due_days(int):
+            due_days(int): -1 when it has not been rented out.
 
-            overdue_days(int)
+            overdue_days(int): Number of overdue days, expressed as
+        integer value. Default value is 0.
 
         """
         super().__init__(book_id, title, pub_year, type, overdue_price,
                 due_days, overdue_days)
     
     def __str__(self):
-        """
-            
-            return(str)
+        """this method represent the Paper_book object as a string 
+            return(str): Paper book id and  title
         """
         str = (f"Paper Book ID: {self.book_id}"
                f"Paper Book title: {self.title}")
@@ -158,9 +149,6 @@ class Audio_book(Book):
         expressed by a 4-digit integer.
 
         Type (str): Type of a book, expressed as string value.
-
-        Copies (int): Number of Book's copies, expressed as int value.
-        Default int value is 1.
 
         Overdue price (float): Overdue price of a book, price increases 
         per day late based on rent_dur, expressed as a float.
@@ -182,16 +170,15 @@ class Audio_book(Book):
             pub_year (int): Year as 4 digit integer representing the
             publication of the book.
 
-            type(str):
-
-            copies(int):
+            type(str):audio_book
 
             overdue_price (float): A float that is determined by
             (rent_dur - rented_days) * price. Default to 5.
 
-            due_days(int):
+            due_days(int):-1 when it has not been rented out.
 
-            overdue_days(int):
+            overdue_days(int): Number of overdue days, expressed as
+        integer value. Default value is 0.
         """
         super().__init__(book_id, title, pub_year, type, 
                 overdue_price, due_days, overdue_days)
@@ -199,14 +186,14 @@ class Audio_book(Book):
     def rented(self):
         """ this methode determined by (rent_dur - rented_days) * price. Default to 5.
         
-            return(int): price of overdue books
+           side effects:
+                     price of overdue books
         """
         self.overdue_price = super().overdue_price + 5
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
     
     def __str__(self):
-        """
-        
+        """ this method represent the Audio_book object as a string 
         return(str):Audio books id and title
         """
         str = (f"Audio Book ID: {self.book_id} \ "
@@ -214,6 +201,10 @@ class Audio_book(Book):
         return str
 #Functions
 def book_info(books):
+    """ Books information on ()  
+    Args:
+        books(str):
+    """
     count = 1
     for book in books:
         if ((not isinstance(book, Book)) &
@@ -227,6 +218,14 @@ def book_info(books):
         count += 1
 
 def rent_book(books, rented, book):
+    """ Check if a Book is rented
+    Args:
+        books(str):
+        
+        rented(str):
+        
+        book(str):
+    """
     for a in books:
         if a.book_id == book.book_id:
             books.remove(a)
@@ -236,8 +235,20 @@ def rent_book(books, rented, book):
                   f'with Book ID# {book.book_id}')
             return
 
-
 def return_book(books, rented, book):
+    """ check if a book is returned 
+    
+    Args:
+
+        books(str): 
+
+        rented(str):
+
+        book(str):
+
+        return 
+    
+    """
     for a in rented:
         if a.book_id == book.book_id:
             rented.remove(a)
@@ -249,8 +260,13 @@ def return_book(books, rented, book):
 
 def main(filepath):
     """The main function
+
+        books()
+        audio_book()
+        paper_book()
+
     
-        Returns: 
+       side effects 
     """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
