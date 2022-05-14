@@ -69,13 +69,19 @@ class Book:
         return str
 
     def rented(self):
-        """ this method represent due days a books in the book object
+        """ represent due days a books in the book object
         """
         self.due_days = 7
 
     def returned(self):
-        """ this methode represent the returned books in the book object 
-        return(bool):True 
+        """ represent the returned books in the book object
+        Overdue price of a book, price increases 
+        per day late based on rent_dur, expressed as a float.
+        Default float value is 0.  -1 when it has not been rented out.
+        Number of overdue days, expressed as
+        integer value. Default value is 0.
+       
+             return(bool):True 
         """
         if self.overdue_price == 0:
             self.due_days = -1
@@ -129,7 +135,7 @@ class Paper_book(Book):
                 due_days, overdue_days)
     
     def __str__(self):
-        """this method represent the Paper_book object as a string 
+        """represent the Paper_book object as a string 
             return(str): Paper book id and  title
         """
         str = (f"Paper Book ID: {self.book_id}"
@@ -184,26 +190,31 @@ class Audio_book(Book):
                 overdue_price, due_days, overdue_days)
 
     def rented(self):
-        """ this methode determined by (rent_dur - rented_days) * price. Default to 5.
-        
+        """Determined rice of book by (rent_dur - rented_days) * price. Default to 5.
+
            side effects:
-                     price of overdue books
+                     print out price of overdue books
         """
         self.overdue_price = super().overdue_price + 5
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
     
     def __str__(self):
-        """ this method represent the Audio_book object as a string 
-        return(str):Audio books id and title
+        """ Represent the Audio_book object as a string 
+        
+             return(str):Audio books id and title
+       
         """
         str = (f"Audio Book ID: {self.book_id} \ "
                f"Audio Book title: {self.title}")
         return str
 #Functions
 def book_info(books):
-    """ Books information on ()  
+    """ Books information on (book id, title, type, published year)  
     Args:
-        books(str):
+        books(str): 
+    
+    side effects: 
+                increment books 
     """
     count = 1
     for book in books:
@@ -220,7 +231,7 @@ def book_info(books):
 def rent_book(books, rented, book):
     """ Check if a Book is rented
     Args:
-        books(str):
+        books(str): book object in 
         
         rented(str):
         
@@ -259,14 +270,21 @@ def return_book(books, rented, book):
             return
 
 def main(filepath):
-    """The main function
-
-        books()
-        audio_book()
-        paper_book()
-
-    
-       side effects 
+    """The main function will take one argument, a path to a file containing one book per line. 
+        It will open the file, convert each line to an Book object, and return a list with one instance of Boo k line in the file.
+        a with statement to open the file for reading list comprehension to build the list of Book objects.
+        Sequence unpacking to take Book object in a collection and store them in variables for later use
+        Infinite loop
+       Args:
+            filepath():a with statement to open the file for reading list comprehension to build the list of Book objects.
+       
+       side effects: user will be prompted to make an input as either option 1 to rent a book or option 2 to return a book
+                    If a user input is neither 1 nor 2, they will return to the previous Books Menu. given the correct option 
+                    will be shown a list of Not Rented books (Option 1 Rent) or a list of Rented books (Option 2 Return)
+                    use will be prompted to write a Book ID number, which refers to one of the books displayed in the shown list. 
+                    If the user makes an input that is not one of the book IDs in the list, the user will return to the Books Menu.
+                    If the user enters one of the displayed book IDs, the program will print a message ‘You have rented “Book Title” 
+                    with Book ID# “Book ID”’ (Rent) or ‘You have returned “Book Title” with Book ID# “Book ID”’ (Return).
     """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
