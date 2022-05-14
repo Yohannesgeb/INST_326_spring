@@ -60,7 +60,7 @@ class Book:
             self.overdue_price = self.overdue_days * 5
     
     def __str__(self):
-        """ represent the book object as a string 
+        """ Initialize the book object as a string 
             return(str): book id and book title
         """
         str = (f"Book ID: {self.book_id} / "
@@ -69,7 +69,7 @@ class Book:
         return str
 
     def rented(self):
-        """ represent due days a books in the book object = 7 days """
+        """ due days of books in the book object = 7 days """
         self.due_days = 7
 
     def returned(self):
@@ -134,7 +134,7 @@ class Paper_book(Book):
                 due_days, overdue_days)
     
     def __str__(self):
-        """represent the Paper_book object as a string 
+        """Initialize the Paper_book object as a string 
             return(str): Paper book id and  title
         """
         str = (f"Paper Book ID: {self.book_id}"
@@ -198,7 +198,7 @@ class Audio_book(Book):
         print (f"Rented, Renting cost is $5. And this is your overdue price ${self.overdue_price}")
     
     def __str__(self):
-        """ Represent the Audio_book object as a string 
+        """ Initialize the Audio_book object as a string 
         
              return(str):Audio books id and title
        
