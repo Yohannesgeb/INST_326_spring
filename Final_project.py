@@ -69,8 +69,7 @@ class Book:
         return str
 
     def rented(self):
-        """ represent due days a books in the book object
-        """
+        """ represent due days a books in the book object = 7 days """
         self.due_days = 7
 
     def returned(self):
@@ -211,7 +210,7 @@ class Audio_book(Book):
 def book_info(books):
     """ Books information on (book id, title, type, published year)  
     Args:
-        books(str): 
+        books(str): instance of books in the book object 
     
     side effects: 
                 increment books 
@@ -253,7 +252,7 @@ def return_book(books, rented, book):
 
         books(str): 
 
-        rented(str):
+        rented(str): all rented book in book 
 
         book(str):
 
@@ -271,12 +270,12 @@ def return_book(books, rented, book):
 
 def main(filepath):
     """The main function will take one argument, a path to a file containing one book per line. 
-        It will open the file, convert each line to an Book object, and return a list with one instance of Boo k line in the file.
-        a with statement to open the file for reading list comprehension to build the list of Book objects.
+        a with statement to open the file for reading,convert each line to an Book object, and r
+        eturn a list with one instance of Book line in the file.list comprehension to build the list of Book objects.
         Sequence unpacking to take Book object in a collection and store them in variables for later use
         Infinite loop
        Args:
-            filepath():a with statement to open the file for reading list comprehension to build the list of Book objects.
+            filepath(): open the file for reading list comprehension to build the list of Book objects.
        
        side effects: user will be prompted to make an input as either option 1 to rent a book or option 2 to return a book
                     If a user input is neither 1 nor 2, they will return to the previous Books Menu. given the correct option 
