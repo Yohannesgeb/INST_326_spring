@@ -210,10 +210,10 @@ class Audio_book(Book):
 def book_info(books):
     """ Books information on (book id, title, type, published year)  
     Args:
-        books(str): instance of books in the book object 
+        books(str): instance of books  
     
     side effects: 
-                increment books 
+                increment books and prince book id and title
     """
     count = 1
     for book in books:
@@ -230,11 +230,11 @@ def book_info(books):
 def rent_book(books, rented, book):
     """ Check if a Book is rented
     Args:
-        books(str): book object in 
+        books(str): instance of books  
         
-        rented(str):
+        rented(list): list of books that are rented out 
         
-        book(str):
+        book(str):instance of books in Book object 
     """
     for a in books:
         if a.book_id == book.book_id:
@@ -250,11 +250,11 @@ def return_book(books, rented, book):
     
     Args:
 
-        books(str): 
+        books(str): instance of books 
 
-        rented(str): all rented book in book 
+        rented(list): list of books that are rented out 
 
-        book(str):
+        book(str):instance of books in Book object 
 
         return 
     
