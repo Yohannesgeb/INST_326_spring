@@ -256,7 +256,7 @@ def return_book(books, rented, book):
 
         book(str):instance of books in Book object 
 
-        return 
+        return(str)
     
     """
     for a in rented:
@@ -273,17 +273,19 @@ def main(filepath):
         a with statement to open the file for reading,convert each line to an Book object, and r
         eturn a list with one instance of Book line in the file.list comprehension to build the list of Book objects.
         Sequence unpacking to take Book object in a collection and store them in variables for later use
-        Infinite loop
+        Infinite loop displaying options selection and books menu
        Args:
             filepath(): open the file for reading list comprehension to build the list of Book objects.
        
-       side effects: user will be prompted to make an input as either option 1 to rent a book or option 2 to return a book
-                    If a user input is neither 1 nor 2, they will return to the previous Books Menu. given the correct option 
+       side effects: prompted to make an input as either option 1 to rent a book or option 2 to return a book
+                    If a input is neither 1 nor 2, return to the previous Books Menu. given the correct option 
                     will be shown a list of Not Rented books (Option 1 Rent) or a list of Rented books (Option 2 Return)
-                    use will be prompted to write a Book ID number, which refers to one of the books displayed in the shown list. 
-                    If the user makes an input that is not one of the book IDs in the list, the user will return to the Books Menu.
-                    If the user enters one of the displayed book IDs, the program will print a message ‘You have rented “Book Title” 
+                    prompted to write a Book ID number, which refers to one of the books displayed in the shown list. 
+                    If an input that is not one of the book IDs in the list, return to the Books Menu.
+                    If an input is one of the displayed book IDs, the program will print a message ‘You have rented “Book Title” 
                     with Book ID# “Book ID”’ (Rent) or ‘You have returned “Book Title” with Book ID# “Book ID”’ (Return).
+                    rents a book with acceptable user input of Book ID, the book will be removed from the Not Rented list of books 
+                     be included in the Rented list of books
     """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
