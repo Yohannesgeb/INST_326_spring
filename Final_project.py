@@ -3,6 +3,7 @@ import argparse
 from itertools import count
 import re
 import sys
+import operator
 from typing import overload
 
 from numpy import append
@@ -217,8 +218,8 @@ def book_info(books):
     """
     count = 1
     for book in books:
-        if ((not isinstance(book, Book)) &
-            (not isinstance(book, Audio_book)) &
+        if ((not isinstance(book, Book)) and 
+            (not isinstance(book, Audio_book)) and
             (not isinstance(book, Paper_book))):
                     print('This Book is not a Book object')
                     books.remove(book)
@@ -267,25 +268,26 @@ def return_book(books, rented, book):
             print(f'You have returned {book.title}'
                   f'with Book ID# {book.book_id}')
             return
+def sort_books(date):
+    """ sort books by the date 
+        Args:
+            date(int): book published date
+        
+        side effect: print out list of book sorted by published date 
+    """
+    with open(filepath, "r", encoding="utf-8") as f:
+        date = f.read(delimiter = ',')
+        sort = sorted(date,key = operator.itemgetter(2))
+        for eachline in sort:
+            print (eachline)
 
 def main(filepath):
-    """The main function will take one argument, a path to a file containing one book per line. 
-        a with statement to open the file for reading,convert each line to an Book object, and r
-        eturn a list with one instance of Book line in the file.list comprehension to build the list of Book objects.
-        Sequence unpacking to take Book object in a collection and store them in variables for later use
-        Infinite loop displaying options selection and books menu
+    """
        Args:
             filepath(): open the file for reading list comprehension to build the list of Book objects.
        
        side effects: prompted to make an input as either option 1 to rent a book or option 2 to return a book
-                    If a input is neither 1 nor 2, return to the previous Books Menu. given the correct option 
-                    will be shown a list of Not Rented books (Option 1 Rent) or a list of Rented books (Option 2 Return)
-                    prompted to write a Book ID number, which refers to one of the books displayed in the shown list. 
-                    If an input that is not one of the book IDs in the list, return to the Books Menu.
-                    If an input is one of the displayed book IDs, the program will print a message ‘You have rented “Book Title” 
-                    with Book ID# “Book ID”’ (Rent) or ‘You have returned “Book Title” with Book ID# “Book ID”’ (Return).
-                    rents a book with acceptable user input of Book ID, the book will be removed from the Not Rented list of books 
-                     be included in the Rented list of books
+
     """
     nr_books = list()   #list of not rented books
     r_books = list()    #list of rented books
