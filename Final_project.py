@@ -269,7 +269,7 @@ def return_book(books, rented, book):
                   f'with Book ID# {book.book_id}')
             return
 def sort_books(date):
-    """ sort books by the date 
+    """ sort books by published date 
         Args:
             date(int): book published date
         
@@ -279,14 +279,14 @@ def sort_books(date):
         date = f.read(delimiter = ',')
         sort = sorted(date,key = operator.itemgetter(2))
         for eachline in sort:
-            print (eachline)
+            return eachline
 
 def main(filepath):
-    """
+    """ the point of execution for the entire code 
        Args:
             filepath(): open the file for reading list comprehension to build the list of Book objects.
        
-       side effects: prompted to make an input as either option 1 to rent a book or option 2 to return a book
+       side effects: diplay list book and infomation then user prompted to make an input as either option to rent a book or option to return a book
 
     """
     nr_books = list()   #list of not rented books
