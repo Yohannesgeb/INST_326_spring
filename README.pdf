@@ -1,5 +1,5 @@
 Library Catalog 
-a library management system that could be used in school and college libraries to add new books to the collection, issue books to students, and keep track of books that are returned. Our program assists in completing different operations such as adding, issuing, and returning books. It will also save the book's issuance and return dates, as well as the fee if the book is not returned.
+A library management system that could be used in school and college libraries to add new books to the collection, issue books to students, and keep track of books that are returned. Our program assists in completing different operations such as adding, issuing, and returning books. It will also save the book's issuance and return dates, as well as the fee if the book is not returned.
 Purpose of each file in repository:
 Final_projecct.py
      Purpose: program file written in Python, an interpreted object-oriented programming language. It can be created and edited with a text editor
