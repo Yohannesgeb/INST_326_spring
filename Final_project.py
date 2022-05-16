@@ -264,7 +264,7 @@ def return_book(books, rented, book):
             print(f'You have returned {book.title}'
                   f'with Book ID# {book.book_id}')
             return
-def sort_books(date):
+def sort_books(book_id):
     """ sort books by published date 
         Args:
             date(int): book published date
@@ -273,9 +273,9 @@ def sort_books(date):
     """
     with open(filepath, "r", encoding="utf-8") as f:
         date = f.read(delimiter = ',')
-        sort = sorted(date,key = operator.itemgetter(2))
-        for eachline in sort:
-            return eachline
+    sort = sorted(book_id,key = operator.itemgetter(0))
+    for eachline in sort:
+        return eachline
 
 def main(filepath):
     """ the point of execution for the entire code 
@@ -330,8 +330,7 @@ def main(filepath):
                '(3) Exit the program')
         user = int(input('\nUSER INPUT: '))
         if user == 1:
-            print('\n====== View Books ======\n'
-                    '====== All Books ======\n')
+            print('\n====== View Books ======\n''====== All Books ======\n')
             books.sort(key=lambda x: x.book_id)
             count = 1
             for book in books:
