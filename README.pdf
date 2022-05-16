@@ -2,49 +2,49 @@ Library Catalog
 We created a library management system that could be used in school and college libraries to add new books to the collection, issue books to students, and keep track of books that are returned. Our program assists in completing different operations such as adding, issuing, and returning books. It will also save the book's issuance and return dates, as well as the fee if the book is not returned.
 Purpose of each file in repository:
 Final_projecct.py
-Purpose: program file written in Python, an interpreted object-oriented programming language. It can be created and edited with a text editor
-books.csv
-Purpose: a text file that has a specific format to store book information to be saved in a table structured format.
-proj.txt
-Purpose: a text file that hold information about team members and url for github
-README.pdf
-Purpose: file contains information about the other files in our directory
-LICENSE
-Purpose:General Public license permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license 
-gitignore
-Purpose: ensure that certain files not tracked by Git remain untracked. To stop tracking a file that is currently tracked.
+     Purpose: program file written in Python, an interpreted object-oriented programming language. It can be created and edited with a text editor
+     books.csv
+     Purpose: a text file that has a specific format to store book information to be saved in a table structured format.
+     proj.txt
+     Purpose: a text file that hold information about team members and url for github
+     README.pdf
+     Purpose: file contains information about the other files in our directory
+     LICENSE
+     Purpose:General Public license permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license 
+     gitignore
+     Purpose: ensure that certain files not tracked by Git remain untracked. To stop tracking a file that is currently tracked.
 
 Instructions on how to run the program from the command line:
-Since this program uses command line execution, a program user will be required to first type in “python program_name.py” or “python3 program_name.py” to run the program.
-The user is prompted to select an option from “Books Menu”:  “(1) View books (2) Rent/Return Books (3) Exit the program”. If the user makes an input other than 1, 2, or 3, the program will print a message “INVALID USER INPUT. Please try again.” and then print the initial message again until the user selects a given option. The program will continue running until the user correctly ends the program by selecting an option 3 at the Books Menu.
-Option (1) View books:
-After displaying all information about every book in the books.csv file, users can choose various options to view given lists of books: (1) Not Rented (2) Rented (3) Audio (4) Paper. If the user input is neither 1, 2, 3, nor 4, the user will be given a message “INVALID USER INPUT” and return back to the previous Books Menu.
-When the user makes a correct option input as either 1, 2, 3, or 4, the program will display a list of books that the user wishes to view, then returns to the Books Menu.
-Option (2) Rent/Return Books:
-The user will be prompted to make an input as either option 1 to rent a book or option 2 to return a book. If user input is neither 1 nor 2, they will return to the previous Books Menu.
-When the user chooses a correct option as 1 or 2, he/she will be shown a list of Not Rented books (Option 1 Rent) or a list of Rented books (Option 2 Return). Then he/she will be prompted to write a Book ID number, which refers to one of the books displayed in the shown list. If the user makes an input that is not one of the book IDs in the list, the user will return to the Books Menu.
-If the user enters one of the displayed book IDs, the program will print a message ‘You have rented “Book Title” with Book ID# “Book ID”’ (Rent) or ‘You have returned “Book Title” with Book ID# “Book ID”’ (Return).
-Once the user rents a book with acceptable user input of Book ID, the book will be removed from the Not Rented list of books and be included in the Rented list of books, vice versa when you make a return.
-Option (3) Exit the Program:
-Ends the program.
- Attribution:
-Book class (Parent class, primary author: Jason)
-__init__() method
-__str__() method
-rented method
-returned method
-Paper_book class (Child class, primary author: Yohannes)
-__init__() method
-__str__() method
-Audio_book class (Child class, primary author: Yohannes)
-__init__() method
-rented method
-__str__() method
-book_info function (primary author: Jason)
-rent_book function (primary author: Jason)
-return_book function (primary author: Jason)
-Sort_book function (primary author: Yohannes)
-Main function (primary author: Jason/Yohannes)
-Sequence unpacking
-Doc string for entire Project ( Yohannes)
+      Since this program uses command line execution, a program user will be required to first type in “python program_name.py” or “python3 program_name.py” to run the program.
+      The user is prompted to select an option from “Books Menu”:  “(1) View books (2) Rent/Return Books (3) Exit the program”. If the user makes an input other than 1, 2, or 3, the program will print a message “INVALID USER INPUT. Please try again.” and then print the initial message again until the user selects a given option. The program will continue running until the user correctly ends the program by selecting an option 3 at the Books Menu.
+      Option (1) View books:
+      After displaying all information about every book in the books.csv file, users can choose various options to view given lists of books: (1) Not Rented (2) Rented (3) Audio (4) Paper. If the user input is neither 1, 2, 3, nor 4, the user will be given a message “INVALID USER INPUT” and return back to the previous Books Menu.
+      When the user makes a correct option input as either 1, 2, 3, or 4, the program will display a list of books that the user wishes to view, then returns to the Books Menu.
+      Option (2) Rent/Return Books:
+      The user will be prompted to make an input as either option 1 to rent a book or option 2 to return a book. If user input is neither 1 nor 2, they will return to the previous Books Menu.
+      When the user chooses a correct option as 1 or 2, he/she will be shown a list of Not Rented books (Option 1 Rent) or a list of Rented books (Option 2 Return). Then he/she will be prompted to write a Book ID number, which refers to one of the books displayed in the shown list. If the user makes an input that is not one of the book IDs in the list, the user will return to the Books Menu.
+      If the user enters one of the displayed book IDs, the program will print a message ‘You have rented “Book Title” with Book ID# “Book ID”’ (Rent) or ‘You have returned “Book Title” with Book ID# “Book ID”’ (Return).
+      Once the user rents a book with acceptable user input of Book ID, the book will be removed from the Not Rented list of books and be included in the Rented list of books, vice versa when you make a return.
+      Option (3) Exit the Program:
+      Ends the program.
+Attribution:
+     Book class (Parent class, primary author: Jason)
+     __init__() method
+     __str__() method
+     rented method
+     returned method
+     Paper_book class (Child class, primary author: Yohannes)
+     __init__() method
+     __str__() method
+     Audio_book class (Child class, primary author: Yohannes)
+     __init__() method
+     rented method
+     __str__() method
+     book_info function (primary author: Jason)
+     rent_book function (primary author: Jason)
+     return_book function (primary author: Jason)
+     Sort_book function (primary author: Yohannes)
+     Main function (primary author: Jason/Yohannes)
+     Sequence unpacking
+     Doc string for entire Project ( Yohannes)
 
