@@ -265,14 +265,14 @@ def return_book(books, rented, book):
                   f'with Book ID# {book.book_id}')
             return
 def sort_books(book_id):
-    """ sort books by published date 
+    """ sort books by book id 
         Args:
-            date(int): book published date
+            book_id(int): book id
         
-        side effect: print out list of book sorted by published date 
+        return(list): list of book sorted by book id 
     """
     with open(filepath, "r", encoding="utf-8") as f:
-        date = f.read(delimiter = ',')
+        book_id = f.read(delimiter = ',')
     sort = sorted(book_id,key = operator.itemgetter(0))
     for eachline in sort:
         return eachline
