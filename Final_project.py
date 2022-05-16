@@ -75,12 +75,8 @@ class Book:
 
     def returned(self):
         """ represent the returned books in the book object
-        Overdue price of a book, price increases 
-        per day late based on rent_dur, expressed as a float.
-        Default float value is 0.  -1 when it has not been rented out.
-        Number of overdue days, expressed as
-        integer value. Default value is 0.
-       
+            Overdue price of a book, price increases 
+             
              return(bool):True 
         """
         if self.overdue_price == 0:
@@ -214,7 +210,7 @@ def book_info(books):
         books(str): instance of books  
     
     side effects: 
-                increment books and prince book id and title
+                increment list of book with id and title
     """
     count = 1
     for book in books:
