@@ -4,17 +4,17 @@ Purpose of each file in repository:
 Final_projecct.py
      Purpose: program file written in Python, an interpreted object-oriented programming language. 
               It can be created and edited with a text editor
-     books.csv
+books.csv
      Purpose: a text file that has a specific format to store book information to be saved in a table structured format.
-     proj.txt
+proj.txt
      Purpose: a text file that hold information about team members and url for github
-     README.pdf
+README.pdf
      Purpose: file contains information about the other files in our directory
-     LICENSE
+LICENSE
      Purpose:General Public license permissions of this strong copyleft license are conditioned on making 
              available complete source code of licensed works and modifications, 
              which include larger works using a licensed work, under the same license 
-     gitignore
+gitignore
      Purpose: ensure that certain files not tracked by Git remain untracked. To stop tracking a file that is currently tracked.
 
 Instructions on how to run the program from the command line:
